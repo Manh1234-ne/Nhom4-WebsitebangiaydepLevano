@@ -8,16 +8,11 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminDonHangController.php';
-// require_once './controllers/AdminSanPhamController.php';
-
-// Require toàn bộ file Models
-require_once './models/AdminDanhMuc.php';
-require_once './models/AdminDonHang.php';
-// require_once './models/AdminSanPham.php';
 require_once './controllers/AdminSanPhamController.php';
 
 // Require toàn bộ file Models
 require_once './models/AdminDanhMuc.php';
+require_once './models/AdminDonHang.php';
 require_once './models/AdminSanPham.php';
 
 // Route

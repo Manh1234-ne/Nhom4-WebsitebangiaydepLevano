@@ -38,6 +38,11 @@ function deleteSessionError()
     if (isset($_SESSION['error'])) {
         unset($_SESSION['error']);
     }
+    if(isset($_SESSION['flash'])){
+        unset($_SESSION['flash']);
+        session_unset();
+        session_destroy();
+    }
 }
 
 // Thêm file
@@ -62,15 +67,7 @@ function deleteFile($file){
 }
 
 
-// Xóa session sau khi load trang
-function deleteSessionError(){
-    if(isset($_SESSION['flash'])){
-        // Hủy session sau khi đã tải trang
-        unset($_SESSION['flash']);
-        session_unset();
-        session_destroy();
-    }
-}
+
 
 // Upload - update album ảnh
 function uploadFileAlbum($file, $folderUpload, $key){
