@@ -16,7 +16,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý danh mục sản phẩm</h1>
+          <h1>Quản lý danh sách sản phẩm</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -29,7 +29,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+              <a href="<?= BASE_URL_ADMIN . '?act=form-them-san-pham' ?>">
+                <button class="btn btn-success">Thêm sản phẩm</button>
+              </a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -37,20 +39,40 @@
                 <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Tên danh mục</th>
-                    <th>Mô tả</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Danh mục</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($listDanhMuc as $key => $danhMuc): ?>
+                  <?php foreach ($listSanPham as $key => $sanPham): ?>
                     <tr>
                       <td><?= $key + 1 ?></td>
-                      <td><?= $danhMuc['ten_danh_muc'] ?></td>
-                      <td><?= $danhMuc['mo_ta'] ?></td>
+                      <td><?= $sanPham['ten_san_pham'] ?></td>
                       <td>
-                        <button class="btn btn-warning">Sửa</button>
-                        <button class="btn btn-danger">Xóa</button>
+                        <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width: 100px;" alt=""
+                          onerror="this.onerror=null; this.src='https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/482887opc/anh-mo-ta.png'">
+                      </td>
+                      <td><?= $sanPham['gia_san_pham'] ?></td>
+                      <td><?= $sanPham['so_luong'] ?></td>
+                      <td><?= $sanPham['ten_danh_muc'] ?></td>
+                      <td><?= $sanPham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán'; ?></td>
+                      <td>
+                        <div class="btn-group">
+                          <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                            <button class="btn btn-primary"><i class="far fa-eye"></i></button>
+                          </a>
+                          <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                            <button class="btn btn-warning"><i class="fas fa-cogs"></i></button>
+                          </a>
+                          <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">
+                            <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </div>
+
                       </td>
                     </tr>
                   <?php endforeach ?>
@@ -58,8 +80,12 @@
                 <tfoot>
                   <tr>
                     <th>STT</th>
-                    <th>Tên danh mục</th>
-                    <th>Mô tả</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Danh mục</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>
                   </tr>
                 </tfoot>
