@@ -21,6 +21,7 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     'danh-muc' => (new AdminDanhMucController())->danhSachDanhMuc(),
     // route quản lý đơn hàng
+
     'don-hang' => (new AdminDonHangController())->danhSachDonhang(),
     'form-sua-don-hang' => (new AdminDonHangController())->formEditDonHang(),
     'sua-don-hang' => (new AdminDonHangController())->postEditDonHang(),

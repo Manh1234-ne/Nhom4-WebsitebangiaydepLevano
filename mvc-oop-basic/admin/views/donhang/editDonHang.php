@@ -78,6 +78,7 @@
                                     <select id="inputStatus" name="trang_thai_id" class="form-control custom-select">
                                         <?php foreach ($listTrangThaiDonHang as $trangThai) : ?>
                                             <option
+
                                                 <?php
                                                 if (
                                                     $donHang['trang_thai_id'] > $trangThai['id']
