@@ -20,6 +20,7 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Route
+    
     'danh-muc' => (new AdminDanhMucController())->danhSachDanhMuc(),
     'form-them-danh-muc' => (new AdminDanhMucController())->formAddDanhMuc(),
     'them-danh-muc' => (new AdminDanhMucController())->postAddDanhMuc(),
