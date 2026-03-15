@@ -19,5 +19,6 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     '/' => (new HomeController())->home(),
-    'trangchu' => (new HomeController())->trangchu(),
+    // 'trangchu' => (new HomeController())->trangchu(),
+    'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),
 };
