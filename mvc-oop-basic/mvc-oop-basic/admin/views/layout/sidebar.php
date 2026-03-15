@@ -65,7 +65,7 @@
               <p>Quản lí tài khoản</p>
               <i class = "fas fa-angle-left right"></i>
             </a>
-            <ul calss = "nav nav-treeview">
+            <ul class = "nav nav-treeview">
               <li class = "nav-item">
                 <a href="<?= BASE_URL_ADMIN . '?act=list-tai-khoan-quan-tri' ?>" class = "nav-link">
                   <i class ="nav-icon far fa-user"></i>
@@ -73,7 +73,7 @@
                 </a>
               </li>
               <li class = "nav-item">
-                <a href="" class = "nav-link">
+                  <a href="<?= BASE_URL_ADMIN . '?act=list-tai-khoan-khach-hang' ?>" class = "nav-link">
                   <i class ="nav-icon far fa-user"></i>
                   <p>Tài khoản khách hàng</p>
                 </a>
