@@ -11,7 +11,7 @@ class HomeController
     }
     public function home()
     {
-        echo 'Day la home';
+        require_once './views/home.php';
     }
 
     public function trangChu()
