@@ -1,5 +1,4 @@
 <!-- header -->
-<<<<<<< HEAD
 <?php include './views/layout/header.php'; ?>
 <!-- navbar -->
 <?php include './views/layout/navbar.php'; ?>
@@ -102,7 +101,6 @@
 </script>
 <!-- Code injected by live-server -->
 
-=======
 <?php require './views/layout/header.php'; ?>
 <!-- Navbar -->
 <?php include './views/layout/navbar.php'; ?>
@@ -213,7 +211,6 @@
   });
 </script>
 <!-- Code injected by live-server -->
->>>>>>> Manh1234-ne
 </body>
 
 </html>
