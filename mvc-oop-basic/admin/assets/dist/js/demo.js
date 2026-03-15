@@ -10,6 +10,7 @@
 (function ($) {
   'use strict'
 
+<<<<<<< HEAD
   setTimeout(function () {
     if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
       localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
@@ -17,6 +18,15 @@
       alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
     }
   }, 1000)
+=======
+  // setTimeout(function () {
+  //   if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
+  //     localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
+  //     // eslint-disable-next-line no-alert
+  //     alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
+  //   }
+  // }, 1000)
+>>>>>>> Manh1234-ne
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)

@@ -20,4 +20,11 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     '/' => (new HomeController())->home(),
     'trangchu' => (new HomeController())->trangchu(),
+    // Route
+    '/' => (new HomeController())->home(), // trường hợp đặc biệt
+    'trangchu' => (new HomeController())->trangChu(),
+    // BASE_URL/?act=trangchu
+
+    'danh-sach-san-pham' => (new HomeController())->danhSachSanPham(),
+    // BASE_URL/?act=danh-sach-san-pham
 };
