@@ -3,10 +3,14 @@
 class AdminTaiKhoanController
 {
     public $modelTaiKhoan;
+    public $modelDonHang;
+    public $modelSanPham;
 
     public function __construct()
     {
         $this->modelTaiKhoan = new AdminTaiKhoan();
+        $this->modelDonHang = new AdminDonHang();
+        $this->modelSanPham = new AdminSanPham();
     }
 
     public function danhSachQuanTri()
@@ -42,13 +46,13 @@ class AdminTaiKhoanController
             //Nếu không có lỗi thì thực hiện thêm mới
             if (empty($errors)) {
                 //Nếu có lỗi thì tiến hành thêm danh mục
-               
+
                 //đặt password mặc định
-                $password = password_hash('123456' , PASSWORD_BCRYPT);
+                $password = password_hash('123456', PASSWORD_BCRYPT);
 
                 $chuc_vu_id = 1;
-                
-                $this->modelTaiKhoan->insertTaiKhoan($ho_ten,$email,$password,$chuc_vu_id);
+
+                $this->modelTaiKhoan->insertTaiKhoan($ho_ten, $email, $password, $chuc_vu_id);
 
                 header('location: ' . BASE_URL_ADMIN . '?act=list-tai-khoan-quan-tri');
                 exit();
@@ -59,18 +63,18 @@ class AdminTaiKhoanController
                 header('location: ' . BASE_URL_ADMIN . '?act=form-them-quan-tri');
                 exit();
             }
-        
         }
     }
 
 
-    public function formEditQuanTri(){
+    public function formEditQuanTri()
+    {
         $id_quan_tri = $_GET['id_quan_tri'];
         $quanTri = $this->modelTaiKhoan->getDetailTaiKhoan($id_quan_tri);
         require_once './views/taikhoan/quantri/editQuanTri.php';
     }
 
-     public function postEditQuanTri()
+    public function postEditQuanTri()
     {
         // Kiểm tra xem dữ liệu có phải đc submit lên không
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -83,7 +87,7 @@ class AdminTaiKhoanController
             $email = $_POST['email'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
-            
+
 
 
             // Tạo 1 mảng trống để chứa dữ liệu
@@ -98,9 +102,9 @@ class AdminTaiKhoanController
             if (empty($trang_thai)) {
                 $errors['trang_thai'] = 'Vui lòng chọn trạng thái';
             }
-            
+
             $_SESSION['error'] = $errors;
-           
+
             if (empty($errors)) {
 
                 $this->modelTaiKhoan->updateTaiKhoan(
@@ -123,22 +127,23 @@ class AdminTaiKhoanController
         }
     }
 
-    public function resetPassword(){
+    public function resetPassword()
+    {
         $tai_khoan_id = $_GET['id_quan_tri'];
         $tai_khoan = $this->modelTaiKhoan->getDetailTaiKhoan($tai_khoan_id);
-         //đặt password mặc định
-                $password = password_hash('123456' , PASSWORD_BCRYPT);
+        //đặt password mặc định
+        $password = password_hash('123456', PASSWORD_BCRYPT);
 
         $status = $this->modelTaiKhoan->resetPassword($tai_khoan_id, $password);
-        if($status && $tai_khoan['chuc_vu_id'] == 1){
+        if ($status && $tai_khoan['chuc_vu_id'] == 1) {
             header("Location:" . BASE_URL_ADMIN . "?act=list-tai-khoan-quan-tri");
             exit();
-
-        }elseif($status && $tai_khoan['chuc_vu_id'] == 2){
+        } elseif ($status && $tai_khoan['chuc_vu_id'] == 2) {
             header("Location:" . BASE_URL_ADMIN . "?act=list-tai-khoan-khach-hang");
             exit();
-        }else{
-            var_dump('Lỗi khi reset tài khoản');die;
+        } else {
+            var_dump('Lỗi khi reset tài khoản');
+            die;
         }
     }
 
@@ -149,7 +154,8 @@ class AdminTaiKhoanController
         require_once './views/taikhoan/khachhang/listKhachHang.php';
     }
 
-    public function formEditKhachHang(){
+    public function formEditKhachHang()
+    {
         $id_khach_hang = $_GET['id_khach_hang'];
         $khachHang = $this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);
         require_once './views/taikhoan/khachhang/editKhachHang.php';
@@ -168,10 +174,10 @@ class AdminTaiKhoanController
             $email = $_POST['email'] ?? '';
             $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
             $ngay_sinh = $_POST['ngay_sinh'] ?? '';
-            $gioi_tinh= $_POST['gioi_tinh'] ?? '';
+            $gioi_tinh = $_POST['gioi_tinh'] ?? '';
             $dia_chi = $_POST['dia_chi'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
-            
+
 
 
             // Tạo 1 mảng trống để chứa dữ liệu
@@ -192,9 +198,9 @@ class AdminTaiKhoanController
             if (empty($trang_thai)) {
                 $errors['trang_thai'] = 'Vui lòng chọn trạng thái';
             }
-            
+
             $_SESSION['error'] = $errors;
-           
+
             if (empty($errors)) {
 
                 $this->modelTaiKhoan->updateKhachHang(
@@ -220,5 +226,15 @@ class AdminTaiKhoanController
         }
     }
 
-    
+    public function detailKhachHang()
+    {
+        $id_khach_hang = $_GET['id_khach_hang'];
+        $khachHang = $this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);
+
+        $listDonHang = $this->modelDonHang->getDonHangFromKhachHang($id_khach_hang);
+
+        $listBinhLuan = $this->modelSanPham->getBinhLuanFromKhachHang($id_khach_hang);
+
+        require_once './views/taikhoan/khachhang/detailKhachHang.php';
+    }
 }

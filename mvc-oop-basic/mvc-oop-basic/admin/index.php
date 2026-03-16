@@ -8,11 +8,14 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminBaoCaoThongKeController.php';
 require_once './controllers/AdminTaiKhoanController.php';
+require_once './controllers/AdminDonHangController.php';
+require_once './controllers/AdminSanPhamController.php';
 
 // Require toàn bộ file Models
 require_once './models/AdminDanhMuc.php';
-// require_once './models/AdminSanPham.php';
+require_once './models/AdminSanPham.php';
 require_once './models/AdminTaiKhoan.php';
+require_once './models/AdminDonHang.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -26,19 +29,36 @@ match ($act) {
     // 'san-pham' => (new AdminSanPhamController())->index()
 
     // route quản lí tài khoản
-       //Quản lí tài khoản quản trị
-       'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),
-        'form-them-quan-tri' => (new AdminTaiKhoanController())->formAddQuanTri(),
-        'them-quan-tri' => (new AdminTaiKhoanController())->postAddQuanTri(),
-        'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
-        'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
+    //Quản lí tài khoản quản trị
+    'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),
+    'form-them-quan-tri' => (new AdminTaiKhoanController())->formAddQuanTri(),
+    'them-quan-tri' => (new AdminTaiKhoanController())->postAddQuanTri(),
+    'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
+    'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
 
-        // route reset password tài khoản
-        'reset-password' => (new AdminTaiKhoanController())->resetPassword(),
+    'don-hang' => (new AdminDonHangController())->danhSachDonhang(),
+    'form-sua-don-hang' => (new AdminDonHangController())->formEditDonHang(),
+    'sua-don-hang' => (new AdminDonHangController())->postEditDonHang(),
+    'chi-tiet-don-hang' => (new AdminDonHangController())->detailDonHang(),
 
-        //Quản lí tài khoản khách hàng
-        'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),
-        'form-sua-khach-hang' => (new AdminTaiKhoanController())->formEditKhachHang(),
-        'sua-khach-hang' => (new AdminTaiKhoanController())->postEditKhachHang(),
-        'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
+    'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
+    'form-them-san-pham' => (new AdminSanPhamController())->formAddSanPham(),
+    'them-san-pham' => (new AdminSanPhamController())->postAddSanPham(),
+    'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
+    'sua-san-pham' => (new AdminSanPhamController())->postEditSanPham(),
+    'sua-album-anh-san-pham' => (new AdminSanPhamController())->postEditAnhSanPham(),
+    'xoa-san-pham' => (new AdminSanPhamController())->deleteSanPham(),
+    'chi-tiet-san-pham' => (new AdminSanPhamController())->detailSanPham(),
+
+    //route bình luận
+    'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
+
+    // route reset password tài khoản
+    'reset-password' => (new AdminTaiKhoanController())->resetPassword(),
+
+    //Quản lí tài khoản khách hàng
+    'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),
+    'form-sua-khach-hang' => (new AdminTaiKhoanController())->formEditKhachHang(),
+    'sua-khach-hang' => (new AdminTaiKhoanController())->postEditKhachHang(),
+    'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
 };
