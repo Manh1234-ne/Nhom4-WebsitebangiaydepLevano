@@ -23,6 +23,12 @@ function connectDB() {
 }
 
 
+function formatPrice($price)
+{
+    return number_format($price, 0, ',', '.');
+}
+
+
 
 // Thêm file
 function uploadFile($file, $folderUpload){
