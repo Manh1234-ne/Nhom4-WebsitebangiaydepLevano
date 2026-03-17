@@ -22,24 +22,32 @@ class AdminTaiKhoan
         }
     }
 
-     public function insertTaiKhoan($ho_ten,$email,$password,$chuc_vu_id){
-        try{
-            $sql = 'INSERT INTO tai_khoans (ho_ten, email, mat_khau, chuc_vu_id) VALUES (:ho_ten, :email, :password, :chuc_vu_id )';
+     public function insertTaiKhoan($ho_ten, $email, $password, $chuc_vu_id){
+    try{
+        $sql = 'INSERT INTO tai_khoans 
+        (ho_ten, email, mat_khau, chuc_vu_id, so_dien_thoai, dia_chi, ngay_sinh, gioi_tinh, trang_thai) 
+        VALUES (:ho_ten, :email, :mat_khau, :chuc_vu_id, :so_dien_thoai, :dia_chi, :ngay_sinh, :gioi_tinh, :trang_thai)';
 
-            $stmt = $this->conn->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
 
-            $stmt->execute([
-                ':ho_ten' => $ho_ten,
-                ':email' =>  $email,
-                ':password' =>  $password,
-                ':chuc_vu_id' =>  $chuc_vu_id
-            ]);
+        $stmt->execute([
+            ':ho_ten' => $ho_ten,
+            ':email' => $email,
+            ':mat_khau' => $password, // 👈 đổi tên cho đúng với DB
+            ':chuc_vu_id' => $chuc_vu_id,
+            ':so_dien_thoai' => '',
+            ':dia_chi' => '',
+            ':ngay_sinh' => null,
+            ':gioi_tinh' => 1,
+            ':trang_thai' => 1
+        ]);
 
-            return true;
-        }catch(Exception $e){
-            echo "Lỗi: " . $e->getMessage();
-        }
+        return $this->conn->lastInsertId(); // 👈 trả về ID (xịn hơn true)
+
+    }catch(PDOException $e){
+        die("Lỗi SQL: " . $e->getMessage());
     }
+}
 
      public function getDetailTaiKhoan($id){
         try{
