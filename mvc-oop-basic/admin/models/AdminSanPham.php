@@ -223,5 +223,24 @@ class AdminSanPham {
             echo "Lỗi: " . $e->getMessage();
         }
     }
+    public function getBinhLuanFromKhachHang($id_khach_hang){
+    try{
+        $sql = "SELECT bl.*, sp.ten_san_pham 
+                FROM binh_luans bl
+                JOIN san_phams sp ON bl.san_pham_id = sp.id
+                WHERE bl.tai_khoan_id = :id";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->execute([
+            ':id' => $id_khach_hang
+        ]);
+
+        return $stmt->fetchAll();
+
+    }catch(Exception $e){
+        die("Lỗi: " . $e->getMessage());
+    }
+}
 }
                 

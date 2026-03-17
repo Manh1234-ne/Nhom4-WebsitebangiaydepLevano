@@ -72,5 +72,5 @@ match ($act) {
     'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),
     'form-sua-khach-hang' => (new AdminTaiKhoanController())->formEditKhachHang(),
     'sua-khach-hang' => (new AdminTaiKhoanController())->postEditKhachHang(),
-    // 'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
+    'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
 };
