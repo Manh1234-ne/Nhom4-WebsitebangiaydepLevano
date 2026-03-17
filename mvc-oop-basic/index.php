@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
@@ -17,5 +17,5 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-    
+
 };

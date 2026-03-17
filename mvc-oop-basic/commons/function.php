@@ -74,4 +74,27 @@ function uploadFileAlbum($file, $folderUpload, $key){
     }
     return null;
 }
+
+
+
+// format date 
+function formatDate($date)
+{
+    if (empty($date) || $date === null) {
+        return '';
+    }
+    $ts = strtotime($date);
+    if ($ts === false) {
+        return '';
+    }
+    return date("d-m-Y", $ts);
+}
+
+function checkLoginAdmin()
+{
+    if (!isset($_SESSION['user_admin'])) {
+        header("Location: " . BASE_URL_ADMIN . '?act=login-admin');
+        exit();
+    }
+}
 // Debug
