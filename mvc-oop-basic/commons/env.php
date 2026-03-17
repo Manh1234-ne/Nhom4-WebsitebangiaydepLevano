@@ -12,6 +12,8 @@ define('BASE_URL'       , 'http://localhost/giaydep-levano/mvc-oop-basic/');
 // Dường dẫn vào phần admin
 define('BASE_URL_ADMIN'       , 'http://localhost/giaydep-levano/mvc-oop-basic/admin/');
 
+
+
 define('DB_HOST'    , 'localhost');
 define('DB_PORT'    , 3306);
 define('DB_USERNAME', 'root');

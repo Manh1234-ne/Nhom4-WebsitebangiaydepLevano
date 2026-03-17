@@ -1,5 +1,6 @@
-<?php
+<?php 
 
+require_once 'models/SanPham.php';
 class HomeController
 {
     public $modelSanPham;
@@ -26,3 +27,6 @@ class HomeController
         require_once './views/listProduct.php';
     }
 }
+    
+
+
