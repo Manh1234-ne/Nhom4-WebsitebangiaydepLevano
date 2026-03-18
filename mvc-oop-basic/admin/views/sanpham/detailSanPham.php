@@ -115,55 +115,6 @@
 
           </div>
         </div>
-<<<<<<< HEAD:mvc-oop-basic/admin/views/sanpham/detailSanPham.php
-       
-        <ul class="nav nav-tabs row mt-4" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Bình luận của sản phẩm</button>
-          </li>
-          
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <table class="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>tên người bình luận</th>
-                      <th>Nội dung</th>
-                      <th>Ngày đăng</th>
-                      <th>Thao tác</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Nguyễn Duy Mạnh</td>
-                      <td>Sản phẩm hơi cũ</td>
-                      <td>20/04/2024</td>
-                      <td>
-                        <div class="btn-group">
-                          <a href="#"><button class="btn btn-warning">Ẩn</button></a>
-                          <a href="#"><button class="btn btn-danger">Xóa</button></a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Lê Đức Hòa</td>
-                      <td>Sản phẩm hơi xấu</td>
-                      <td>20/04/2023</td>
-                      <td>
-                        <div class="btn-group">
-                          <a href="#"><button class="btn btn-warning">Ẩn</button></a>
-                          <a href="#"><button class="btn btn-danger">Xóa</button></a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-          </div>
-=======
 
 
         <div class="col-12">
@@ -207,7 +158,6 @@
               <?php endforeach ?>
             </tbody>
           </table>
->>>>>>> lebang271206-ui:mvc-oop-basic/mvc-oop-basic/admin/views/sanpham/detailSanPham.php
         </div>
       </div>
       <!-- /.card-body -->

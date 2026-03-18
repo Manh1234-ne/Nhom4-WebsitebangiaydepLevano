@@ -223,24 +223,78 @@ class AdminSanPham {
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    public function getBinhLuanFromKhachHang($id_khach_hang){
-    try{
-        $sql = "SELECT bl.*, sp.ten_san_pham 
-                FROM binh_luans bl
-                JOIN san_phams sp ON bl.san_pham_id = sp.id
-                WHERE bl.tai_khoan_id = :id";
+     public function getBinhLuanFromKhachHang($id)
+    {
+        try {
+            $sql = 'SELECT binh_luans.*, san_phams.ten_san_pham
+            FROM binh_luans
+            LEFT JOIN san_phams ON binh_luans.san_pham_id = san_phams.id
+            WHERE binh_luans.tai_khoan_id = :id
+            ';
 
-        $stmt = $this->conn->prepare($sql);
+            $stmt = $this->conn->prepare($sql);
 
-        $stmt->execute([
-            ':id' => $id_khach_hang
-        ]);
+            $stmt->execute([':id' => $id]);
 
-        return $stmt->fetchAll();
-
-    }catch(Exception $e){
-        die("Lỗi: " . $e->getMessage());
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "lỗi" . $e->getMessage();
+        }
     }
-}
+
+    public function getDetailBinhLuan($id){
+        try{
+            $sql = 'SELECT * FROM binh_luans WHERE id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([':id' => $id]);
+
+            return $stmt->fetch();
+        }catch(Exception $e){
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function updateTrangThaiBinhLuan($id, $trang_thai){
+        try{
+            $sql = 'UPDATE binh_luans
+                    SET
+                        trang_thai = :trang_thai
+                        
+                    WHERE id = :id';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([
+                ':trang_thai' => $trang_thai,
+                ':id' => $id
+            ]);
+
+            // Lấy id sản phẩm vừa thêm
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function getBinhLuanFromSanPham($id)
+    {
+        try {
+            $sql = 'SELECT binh_luans.*, tai_khoans.ho_ten
+            FROM binh_luans
+            LEFT JOIN tai_khoans ON binh_luans.tai_khoan_id = tai_khoans.id
+            WHERE binh_luans.san_pham_id = :id
+            ';
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute([':id' => $id]);
+
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "lỗi" . $e->getMessage();
+        }
+    }
 }
                 
