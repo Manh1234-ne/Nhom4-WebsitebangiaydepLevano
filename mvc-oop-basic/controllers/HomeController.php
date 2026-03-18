@@ -3,9 +3,11 @@
 class HomeController
 {
     public $modelSanPham;
+    public $modelTaiKhoan;
     public function __construct()
     {
         $this->modelSanPham = new SanPham();
+        $this->modelTaiKhoan = new TaiKhoan();
     }
 
     public function home()
@@ -30,6 +32,30 @@ class HomeController
         } else {
             header("Location: " . BASE_URL);
             exit();
+        }
+    }
+    function formLogin()
+    {
+        require_once './views/auth/formLogin.php';
+        deleteSessionError();
+        exit();
+    }
+    function postLogin()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $user = $this->modelTaiKhoan->checkLogin($email, $password);
+            if ($user == $email) {
+                $_SESSION['user_client'] = $user;
+                header("Location: " . BASE_URL);
+                exit();
+            } else {
+                $_SESSION['error'] = $user;
+                $_SESSION['flash'] = true;
+                header("Location: " . BASE_URL . '?act=login');
+                exit();
+            }
         }
     }
 }

@@ -14,7 +14,7 @@
                         <div class="widget-title">
                             <div class="widget-logo">
                                 <a href="index.html">
-                                    <img src="assets/img/logo/logo.png" alt="brand logo">
+                                    <img src="assets/img/levano.jpg" alt="brand logo" width="150px">
                                 </a>
                             </div>
                         </div>
