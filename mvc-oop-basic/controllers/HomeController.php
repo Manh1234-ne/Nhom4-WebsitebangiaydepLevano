@@ -154,7 +154,7 @@ class HomeController
 
             $tai_khoan_id = $user['id'];
             //Thêm thông tin vào db
-            $this -> modelDonHang->addDonHang($tai_khoan_id,
+            $donhang = $this -> modelDonHang->addDonHang($tai_khoan_id,
                                               $ten_nguoi_nhan,
                                               $email_nguoi_nhan, 
                                               $sdt_nguoi_nhan, 
@@ -165,8 +165,45 @@ class HomeController
                                               $ngay_dat, 
                                               $trang_thai_id,
                                               $ma_don_hang);
-             header("Location: " . BASE_URL . '?act=trangchu');
+            //  header("Location: " . BASE_URL . '?act=trangchu');
+            
+            //Lấy thông tin giỏ hàng của người dùng
+            $gioHang = $this->modelGioHang->getGioHangFromUser($tai_khoan_id);
+
+            //Lưu sản phẩm vào chi tiết đơn hàng
+            if($donhang){
+                //Lấy ra toàn bộ sản phẩm trong giỏ hàng
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+
+                //Thêm từng sản phẩm từ giỏ hàng vào bảng chi tiết đơn hàng 
+                foreach($chiTietGioHang as $item){
+                    $donGia = $item['gia_khuyen_mai'] ?? $item['gia_san_pham'];//Ưu tiên đơn giá sẽ lây giá khuyến mãi
+
+                    $this->modelDonHang->addChiTietDonHang(
+                        $donhang, //ID đơn hàng
+                        $item['san_pham_id'], //ID sản phẩm
+                        $donGia, //Đơn giá
+                        $item['so_luong'], //Số lượng
+                        $donGia * $item['so_luong'] //Thành tiền
+                    );
+                }
+
+                //Sau khi thêm xong thì phải tiến hành xóa sản phẩm trong giỏ hàng
+                // Xóa toàn bộ sản phẩm trong chi tiết giỏ hàng
+                $this->modelGioHang->clearDetailGioHang($gioHang['id']);
+
+                //Xóa thông tin giỏ hàng người dùng
+                $this->modelGioHang->clearGioHang($tai_khoan_id);
+
+                //Chuyển hướng về trang lịch sử mua hàng   
+                header("Location: " . BASE_URL . '?act=lich-su-mua-hang');
+                exit();
+            }else{
+                echo "Đặt hàng thất bại. Vui lòng thử lại.";
+            }
 
         }
     }
+
+
 }
