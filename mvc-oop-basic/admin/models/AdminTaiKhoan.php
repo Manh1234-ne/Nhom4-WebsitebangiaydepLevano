@@ -104,8 +104,7 @@ class AdminTaiKhoan
                     SET 
                         mat_khau = :mat_khau
                     WHERE id = :id';
-
-            $stmt = $this->conn->prepare($sql);
+$stmt = $this->conn->prepare($sql);
 
             // var_dump($stmt);die;
             $stmt->execute([

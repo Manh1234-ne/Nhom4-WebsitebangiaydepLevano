@@ -65,6 +65,9 @@ match ($act) {
     'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
     'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
 
+    //route bình luận
+    'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
+
     // route reset password tài khoản
     'reset-password' => (new AdminTaiKhoanController())->resetPassword(),
 
@@ -72,5 +75,5 @@ match ($act) {
     'list-tai-khoan-khach-hang' => (new AdminTaiKhoanController())->danhSachKhachHang(),
     'form-sua-khach-hang' => (new AdminTaiKhoanController())->formEditKhachHang(),
     'sua-khach-hang' => (new AdminTaiKhoanController())->postEditKhachHang(),
-    // 'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
+    'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
 };

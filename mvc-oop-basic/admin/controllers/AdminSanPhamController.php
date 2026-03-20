@@ -334,6 +334,7 @@ class AdminSanPhamController
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
 
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+        $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
 
         if ($sanPham) {
             //Nếu tồn tại thì trả về form sửa sản phẩm
@@ -342,6 +343,30 @@ class AdminSanPhamController
             //Nếu không tồn tại thì chuyển hướng về trang danh sách sản phẩm
             header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
             exit();
+        }
+    }
+    public function updateTrangThaiBinhLuan()
+    {
+        $id_binh_luan = $_POST['id_binh_luan'];
+        $name_view = $_POST['name_view'];
+        $id_khach_hang = $_POST['id_khach_hang'];
+        $binhLuan = $this->modelSanPham->getDetailBinhLuan($id_binh_luan);
+
+        if ($binhLuan) {
+            $trang_thai_upate = '';
+            if ($binhLuan['trang_thai'] == 1) {
+                $trang_thai_upate = 2;
+            } else {
+                $trang_thai_upate = 1;
+            }
+            $status = $this->modelSanPham->updateTrangThaiBinhLuan($id_binh_luan, $trang_thai_upate);
+            if ($status) {
+                if ($name_view == 'detail_khach') {
+                    header('location: ' . BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id']);
+                }else{
+                    header('location: ' . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $binhLuan['san_pham_id']);
+                }
+            }
         }
     }
 }
