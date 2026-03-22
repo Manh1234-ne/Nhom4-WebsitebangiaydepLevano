@@ -150,7 +150,7 @@
                                 <div class="single-payment-method show">
                                     <div class="payment-method-name">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="cashon" name="phuong-thuc-thanh-toan_id" value="1" class="custom-control-input" checked />
+                                            <input type="radio" id="cashon" name="phuong_thuc_thanh_toan_id" value="1" class="custom-control-input" checked />
                                             <label class="custom-control-label" for="cashon">Thanh toán khi nhận hàng</label>
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                 <div class="single-payment-method">
                                     <div class="payment-method-name">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="directbank" name="phuong-thuc-thanh-toan_id" value="2" class="custom-control-input" />
+                                            <input type="radio" id="directbank" name="phuong_thuc_thanh_toan_id" value="2" class="custom-control-input" />
                                             <label class="custom-control-label" for="directbank">Thanh toán online</label>
                                         </div>
                                     </div>

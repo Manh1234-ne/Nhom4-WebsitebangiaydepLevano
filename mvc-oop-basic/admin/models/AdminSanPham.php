@@ -223,8 +223,7 @@ class AdminSanPham {
             echo "Lỗi: " . $e->getMessage();
         }
     }
-
-    public function getBinhLuanFromKhachHang($id)
+     public function getBinhLuanFromKhachHang($id)
     {
         try {
             $sql = 'SELECT binh_luans.*, san_phams.ten_san_pham

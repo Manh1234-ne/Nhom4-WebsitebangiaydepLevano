@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+session_start();
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
@@ -10,6 +10,7 @@ require_once './controllers/HomeController.php';
 // Require toàn bộ file Models
 require_once './models/Student.php';
 require_once './models/SanPham.php';
+require_once './models/TaiKhoan.php';
 require_once './models/GioHang.php';
 require_once './models/DonHang.php';
 
@@ -21,13 +22,17 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     '/' => (new HomeController())->home(),
-    'trangchu' => (new HomeController())->trangchu(),
-
-
-    'danh-sach-san-pham' => (new HomeController())->danhSachSanPham(),
+    // 'trangchu' => (new HomeController())->trangchu(),
     'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham(),
+
+    // auth
+    'login' => (new HomeController())->formLogin(),
+    'check-login' => (new HomeController())->postLogin(),
     'them-gio-hang' => (new HomeController())->addGioHang(),
     'gio-hang' => (new HomeController())->gioHang(),
     'thanh-toan' => (new HomeController())->thanhToan(),
     'xu-ly-thanh-toan' => (new HomeController())->postThanhToan(),
+    'lich_su_mua_hang' => (new HomeController())->lichSuMuaHang(),
+    'chi_tiet_mua_hang' => (new HomeController())->chiTietMuaHang(),
+    'huy_don_hang' => (new HomeController())->huyDonHang(),
 };

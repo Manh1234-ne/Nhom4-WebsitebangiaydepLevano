@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 // Require file Common
 require_once '../commons/env.php'; // Khai báo biến môi trường
@@ -62,12 +63,6 @@ match ($act) {
 
 
 
-
-// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
-
-    // Route
-
-
     // route quản lí tài khoản
     //Quản lí tài khoản quản trị
     'list-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->danhSachQuanTri(),
@@ -75,12 +70,6 @@ match ($act) {
     'them-quan-tri' => (new AdminTaiKhoanController())->postAddQuanTri(),
     'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
     'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
-
-
-    
-
-    //route bình luận
-    'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
 
     // route reset password tài khoản
     'reset-password' => (new AdminTaiKhoanController())->resetPassword(),
@@ -91,5 +80,15 @@ match ($act) {
     'sua-khach-hang' => (new AdminTaiKhoanController())->postEditKhachHang(),
     'chi-tiet-khach-hang' => (new AdminTaiKhoanController())->detailKhachHang(),
 
-    default => (new AdminDanhMucController())->danhSachDanhMuc(),
+
+    // route quản lí tài khoản cá nhân(quản trị)
+    'form-sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->formEditCaNhanQuanTri(),
+    // 'sua-thong-tin-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditCaNhanQuanTri(),
+
+    'sua-mat-khau-ca-nhan-quan-tri' => (new AdminTaiKhoanController())->postEditMatKhauCaNhan(),
+
+    // route auth
+    'login-admin' => (new AdminTaiKhoanController())->formLogin(),
+    'check-login-admin' => (new AdminTaiKhoanController())->login(),
+    'logout-admin' => (new AdminTaiKhoanController())->logout(),
 };

@@ -22,26 +22,18 @@ class SanPham
             $stmt->execute();
 
             return $stmt->fetchAll();
+
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    // Lấy danh sách sản phẩm đơn giản
-    public function getAllProduct()
+    
+
+    public function getDetailSanPham($id)
     {
         try {
-            $sql = 'SELECT * FROM san_phams';
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-
-            return $stmt->fetchAll();
-        } catch (Exception $e) {
-            echo "Lỗi: " . $e->getMessage();
-        }
-    }
-    public function getDetailSanPham($id)
+            $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
             FROM san_phams
             INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
             WHERE san_phams.id = :id';

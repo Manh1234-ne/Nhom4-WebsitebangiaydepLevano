@@ -70,4 +70,3 @@
 <!-- Footer -->
 <?php include './views/layout/footer.php'; ?>
 <!-- End footer -->
-
