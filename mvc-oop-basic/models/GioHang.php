@@ -9,16 +9,20 @@ class GioHang
     }
 
     public function getGioHangFromUser($id)
-    {
-        try {
-            $sql = "SELECT * FROM gio_hangs WHERE tai_khoan_id = :tai_khoan_id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute([':tai_khoan_id' => $id]);
-            return $stmt->fetch();
-        } catch (Exception $e) {
-            echo "Lỗi truy vấn: " . $e->getMessage();
-        }
+{
+    try {
+        $sql = "SELECT * FROM gio_hangs 
+                WHERE tai_khoan_id = :tai_khoan_id 
+                ORDER BY id DESC 
+                LIMIT 1"; // 🔥 LẤY GIỎ MỚI NHẤT
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':tai_khoan_id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo "Lỗi truy vấn: " . $e->getMessage();
     }
+}
 
     public function getDetailGioHang($id)
     {

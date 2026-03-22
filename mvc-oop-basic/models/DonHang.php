@@ -35,7 +35,7 @@ class DonHang
     public function addChiTietDonHang($donHangId, $sanPhamId, $donGia, $soLuong, $thanhTien)
     {
         try {
-            $sql = "INSERT INTO chi_tiet_don_hang (don_hang_id, san_pham_id, don_gia, so_luong, thanh_tien) VALUES (:don_hang_id, :san_pham_id, :don_gia, :so_luong, :thanh_tien)";
+            $sql = "INSERT INTO chi_tiet_don_hangs (don_hang_id, san_pham_id, don_gia, so_luong, thanh_tien) VALUES (:don_hang_id, :san_pham_id, :don_gia, :so_luong, :thanh_tien)";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
@@ -101,27 +101,23 @@ class DonHang
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    // public function getChiTietDonHangByDonHangId($donHangId)
-    // {
-    //     try {
-    //         $sql = "SELECT 
-    //                 chi_tiet_don_hangs.*
-    //                 san_phams.ten_san_pham,
-    //                 san_phams.hinh_anh
-    //         FROM 
-    //                 chi_tiet_don_hangs
-    //         JOIN
-    //                 san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
-    //         WHERE   
-    //                 chi_tiet_don_hangs.don_hang_id = :don_hang_id";
+    public function getChiTietDonHangByDonHangId($donHangId)
+    {
+        try {
+            $sql = "SELECT 
+                    chi_tiet_don_hangs.*,
+                    san_phams.ten_san_pham,
+                    san_phams.hinh_anh FROM chi_tiet_don_hangs
+            JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+            WHERE chi_tiet_don_hangs.don_hang_id = :don_hang_id";
 
-    //         $stmt = $this->conn->prepare($sql);
-    //         $stmt->execute(['don_hang_id' => $donHangId]);
-    //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //     } catch (Exception $e) {
-    //         echo "Lỗi: " . $e->getMessage();
-    //     }
-    // }
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':don_hang_id' => $donHangId]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
     public function updateTrangThaiDonHang($donHangId, $trangthaiID)
     {
         try {
