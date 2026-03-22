@@ -32,7 +32,7 @@ match ($act) {
     'gio-hang' => (new HomeController())->gioHang(),
     'thanh-toan' => (new HomeController())->thanhToan(),
     'xu-ly-thanh-toan' => (new HomeController())->postThanhToan(),
-    // 'lich_su_mua_hang' => (new HomeController())->lichSuMuaHang(),
-    // 'chi_tiet_mua_hang' => (new HomeController())->chiTietMuaHang(),
-    // 'huy_don_hang' => (new HomeController())->huyDonHang(),
+    'lich_su_mua_hang' => (new HomeController())->lichSuMuaHang(),
+    'chi_tiet_mua_hang' => (new HomeController())->chiTietMuaHang(),
+    'huy_don_hang' => (new HomeController())->huyDonHang(),
 };

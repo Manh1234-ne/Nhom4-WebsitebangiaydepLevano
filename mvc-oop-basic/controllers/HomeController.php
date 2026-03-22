@@ -79,7 +79,7 @@ class HomeController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_SESSION['user_client']))
-$user = $_SESSION['user_client'];            //Lấy dữ liệu giỏ hàng của người dùng 
+                $user = $_SESSION['user_client'];            //Lấy dữ liệu giỏ hàng của người dùng 
             $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
 
             if (!$gioHang) {
@@ -110,46 +110,46 @@ $user = $_SESSION['user_client'];            //Lấy dữ liệu giỏ hàng c�
     }
 
     public function gioHang()
-{
-    if (isset($_SESSION['user_client'])) {
-        $user = $_SESSION['user_client'];
+    {
+        if (isset($_SESSION['user_client'])) {
+            $user = $_SESSION['user_client'];
 
-        $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
 
-        if (!$gioHang) {
-            $gioHangId = $this->modelGioHang->addGioHang($user['id']);
-            $gioHang = ['id' => $gioHangId];
+            if (!$gioHang) {
+                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
+                $gioHang = ['id' => $gioHangId];
+            }
+
+            $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+
+            require_once './views/gioHang.php';
+        } else {
+            header("Location: " . BASE_URL . '?act=login');
+            exit();
         }
-
-        $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-
-        require_once './views/gioHang.php';
-    } else {
-        header("Location: " . BASE_URL . '?act=login');
-        exit();
     }
-}
 
     public function thanhToan()
-{
-    if (isset($_SESSION['user_client'])) {
-        $user = $_SESSION['user_client'];
+    {
+        if (isset($_SESSION['user_client'])) {
+            $user = $_SESSION['user_client'];
 
-        $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
 
-        if (!$gioHang) {
-            $gioHangId = $this->modelGioHang->addGioHang($user['id']);
-            $gioHang = ['id' => $gioHangId];
+            if (!$gioHang) {
+                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
+                $gioHang = ['id' => $gioHangId];
+            }
+
+            $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+
+            require_once './views/thanhToan.php';
+        } else {
+            header("Location: " . BASE_URL . '?act=login');
+            exit();
         }
-
-        $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-
-        require_once './views/thanhToan.php';
-    } else {
-        header("Location: " . BASE_URL . '?act=login');
-        exit();
     }
-}
 
     public function postThanhToan()
     {
@@ -166,7 +166,7 @@ $user = $_SESSION['user_client'];            //Lấy dữ liệu giỏ hàng c�
             $trang_thai_id = 1;
             $ma_don_hang = 'DH-' . rand(1000, 9999);
 
-$user = $_SESSION['user_client'];
+            $user = $_SESSION['user_client'];
             $tai_khoan_id = $user['id'];
             //Thêm thông tin vào db
             $donhang = $this->modelDonHang->addDonHang(
@@ -223,13 +223,97 @@ $user = $_SESSION['user_client'];
 
 
 
-    public function lichSuMuaHang(){
-        
-    }
-    public function chiTietMuaHang(){
+    public function lichSuMuaHang()
+    {
+        if (isset($_SESSION['user_client'])) {
+            // Lấy ra thông tin tài khoản đăng nhập
+            $user = $_SESSION['user_client'];
+            $tai_khoan_id = $user['id'];
 
-    }
-    public function huyDonHang(){
+            // Lấy ra danh sách trạng thái đơn hàng
+            $arrTrangThaiDonHang = $this->modelDonHang->getTrangThaIDonHang();
+            $trangThaiDonHang = array_column($arrTrangThaiDonHang, 'ten_trang_thai', 'id');
 
+
+            // Lấy ra danh sách phương thức thanh toán
+            $arrPhuongThucThanhToan = $this->modelDonHang->getPhuongThucThanhToan();
+            $phuongThucThanhToan = array_column($arrPhuongThucThanhToan, 'ten_phuong_thuc', 'id');
+
+
+            // Lấy ra danh sách tất cả trạng thái của tài khoản
+            $donHangs = $this->modelDonHang->getDonHangFromUser($tai_khoan_id);
+            require_once "./views/lichSuMuaHang.php";
+        } else {
+            var_dump("Ban chua dang nhap");
+            die;
+        }
+    }
+    // public function chiTietMuaHang()
+    // {
+    //     if (isset($_SESSION['user_client'])) {
+    //         // Lấy ra thông tin tài khoản đăng nhập
+    //         $user = $_SESSION['user_client'];
+    //         $tai_khoan_id = $user['id'];
+
+    //         // Lấy id đơn hàng truyền từ URL
+    //         $donHangId = $_GET['id'];
+
+
+    //         // Lấy ra danh sách trạng thái đơn hàng
+    //         $arrTrangThaiDonHang = $this->modelDonHang->getTrangThaIDonHang();
+    //         $trangThaiDonHang = array_column($arrTrangThaiDonHang, 'ten_trang_thai', 'id');
+
+
+    //         // Lấy ra danh sách phương thức thanh toán
+    //         $arrPhuongThucThanhToan = $this->modelDonHang->getPhuongThucThanhToan();
+    //         $phuongThucThanhToan = array_column($arrPhuongThucThanhToan, 'ten_phuong_thuc', 'id');
+
+    //         // Lấy ra thông tin đơn hàng theo ID
+    //         $donHang = $this->modelDonHang->getDonHangById($donHangId);
+
+    //         // Lấy thông tin sản phẩm của đơn hàng trong bảng chi tiết đơn hàng
+    //         $chiTietDonHang = $this->modelDonHang->getChiTietDonHangByDonHangId($donHangId);
+    //     } else {
+    //         var_dump("Ban chua dang nhap");
+    //         die;
+    //     }
+    // }
+    public function huyDonHang()
+    {
+        if (isset($_SESSION['user_client'])) {
+            // Lấy ra thông tin tài khoản đăng nhập
+            $user = $_SESSION['user_client'];
+            $tai_khoan_id = $user['id'];
+
+            // Lấy id đơn hàng truyền từ URL
+            $donHangId = $_GET['id'];
+
+
+            // Kiểm tra đơn hàng
+            $donHang = $this->modelDonHang->getDonHangById($donHangId);
+
+            if ($donHang['tai_khoan_id'] != $tai_khoan_id) {
+                echo "Bạn không có quyền hủy đơn hàng này";
+                exit;
+            }
+            if ($donHang['trang_thai_id'] != 1) {
+                echo "Chỉ đơn hàng ở trạng thái 'Chưa xác nhận' mới có thể hủy";
+                exit;
+            }
+
+
+            // Hủy đơn hàng
+            $this->modelDonHang->updateTrangThaiDonHang($donHangId, 11);
+            header("Location: " . BASE_URL . '?act=lich_su_mua_hang');
+            exit();
+
+
+            // Lấy ra danh sách tất cả trạng thái của tài khoản
+            $donHangs = $this->modelDonHang->getDonHangFromUser($tai_khoan_id);
+            require_once "./views/lichSuMuaHang.php";
+        } else {
+            var_dump("Ban chua dang nhap");
+            die;
+        }
     }
 }
