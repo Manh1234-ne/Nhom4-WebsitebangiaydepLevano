@@ -43,9 +43,8 @@ function deleteFile($file){
 function deleteSessionError(){
     if(isset($_SESSION['flash'])){
         unset($_SESSION['flash']);
-        unset($_SESSION['error']);
-        // session_unset();
-        // session_destroy();
+        session_unset();
+        session_destroy();
     }
 }
 
@@ -61,6 +60,7 @@ function uploadFileAlbum($file, $folderUpload, $key){
     }
     return null;
 }
+// Debug
 
 // Format ngày
 function formatDate($date){
