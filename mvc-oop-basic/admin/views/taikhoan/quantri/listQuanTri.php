@@ -53,17 +53,17 @@
                       <td><?= $quanTri['ho_ten'] ?></td>
                       <td><?= $quanTri['email'] ?></td>
                       <td><?= $quanTri['so_dien_thoai'] ?></td>
-                      <td><?= $quanTri['trang_thai'] == 1 ? ' Active' : 'Inactive'?></td>
+                      <td><?= $quanTri['trang_thai'] == 1 ? ' Active' : 'Inactive' ?></td>
                       <td>
                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-quan-tri&id_quan_tri=' . $quanTri['id'] ?>">
                           <button class="btn btn-warning">Sửa</button>
                         </a>
 
                         <a href="<?= BASE_URL_ADMIN . '?act=reset-password&id_quan_tri=' . $quanTri['id'] ?>"
-                        onclick = "return confirm('Bạn có muốn reset password của tài khoản này không?')">
+                          onclick="return confirm('Bạn có muốn reset password của tài khoản này không?')">
                           <button class="btn btn-danger">Reset</button>
                         </a>
-        
+
                     </tr>
                   <?php endforeach ?>
                 </tbody>

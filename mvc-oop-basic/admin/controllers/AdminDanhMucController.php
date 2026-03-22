@@ -1,5 +1,6 @@
 <?php
 
+
 class AdminDanhMucController
 {
     public $modelDanhMuc;
@@ -50,7 +51,7 @@ class AdminDanhMucController
         //Lấy ra thông tin danh mục cần sửa
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
-        if($danhMuc){
+        if ($danhMuc) {
             //Nếu tồn tại thì trả về form sửa danh mục
             require_once './views/danhmuc/editDanhMuc.php';
         } else {
@@ -96,7 +97,7 @@ class AdminDanhMucController
         //Lấy ra thông tin danh mục cần xóa
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);
-        if($danhMuc){
+        if ($danhMuc) {
             //Nếu tồn tại thì tiến hành xóa danh mục
             $this->modelDanhMuc->destroyDanhMuc($id);
             header('location: ' . BASE_URL_ADMIN . '?act=danh-muc');
@@ -106,18 +107,5 @@ class AdminDanhMucController
             header('location: ' . BASE_URL_ADMIN . '?act=danh-muc');
             exit();
         }
-    }
-
-class AdminDanhMucController
-{
-    public $modelDanhmuc;
-    public function __construct()
-    {
-        $this->modelDanhmuc = new AdminDanhMuc();
-    }
-    public function danhSachDanhMuc()
-    {
-        $listDanhMuc = $this->modelDanhmuc->getAllDanhmuc();
-        require_once './views/danhmuc/listDanhMuc.php';
     }
 }

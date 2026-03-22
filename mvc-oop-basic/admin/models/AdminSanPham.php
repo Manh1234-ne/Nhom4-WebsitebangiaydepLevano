@@ -1,7 +1,6 @@
 <?php
 
-class AdminSanPham
-{
+class AdminSanPham {
     public $conn;
 
     public function __construct()
@@ -9,9 +8,8 @@ class AdminSanPham
         $this->conn = connectDB();
     }
 
-    public function getAllSanPham()
-    {
-        try {
+    public function getAllSanPham(){
+        try{
             $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
             FROM san_phams
             INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id';
@@ -21,23 +19,21 @@ class AdminSanPham
             $stmt->execute();
 
             return $stmt->fetchAll();
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
-
-    public function insertSanPham(
-        $ten_san_pham,
-        $gia_san_pham,
-        $gia_khuyen_mai,
-        $so_luong,
-        $ngay_nhap,
-        $danh_muc_id,
-        $trang_thai,
-        $mo_ta,
-        $hinh_anh
-    ) {
-        try {
+    
+    public function insertSanPham($ten_san_pham, 
+                                        $gia_san_pham, 
+                                        $gia_khuyen_mai, 
+                                        $so_luong, 
+                                        $ngay_nhap, 
+                                        $danh_muc_id, 
+                                        $trang_thai, 
+                                        $mo_ta, 
+                                        $hinh_anh){
+        try{
             $sql = 'INSERT INTO san_phams (ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luong, ngay_nhap, danh_muc_id, trang_thai, mo_ta, hinh_anh) 
                     VALUES (:ten_san_pham, :gia_san_pham, :gia_khuyen_mai, :so_luong, :ngay_nhap, :danh_muc_id, :trang_thai, :mo_ta, :hinh_anh)';
 
@@ -57,15 +53,14 @@ class AdminSanPham
 
             // Lấy id sản phẩm vừa thêm
             return $this->conn->lastInsertId();
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
 
-    public function insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh)
-    {
-        try {
+    public function insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh){
+        try{
             $sql = 'INSERT INTO hinh_anh_san_phams (san_pham_id, link_hinh_anh) 
                     VALUES (:san_pham_id, :link_hinh_anh)';
 
@@ -78,15 +73,14 @@ class AdminSanPham
 
             // Lấy id sản phẩm vừa thêm
             return true;
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
 
-    public function getDetailSanPham($id)
-    {
-        try {
+    public function getDetailSanPham($id){
+        try{
             $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
             FROM san_phams
             INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_muc_id 
@@ -98,14 +92,13 @@ class AdminSanPham
             $stmt->execute([':id' => $id]);
 
             return $stmt->fetch();
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function getListAnhSanPham($id)
-    {
-        try {
+    public function getListAnhSanPham($id){
+        try{
             $sql = 'SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id';
 
             $stmt = $this->conn->prepare($sql);
@@ -113,24 +106,22 @@ class AdminSanPham
             $stmt->execute([':id' => $id]);
 
             return $stmt->fetchAll();
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function updateSanPham(
-        $san_pham_id,
-        $ten_san_pham,
-        $gia_san_pham,
-        $gia_khuyen_mai,
-        $so_luong,
-        $ngay_nhap,
-        $danh_muc_id,
-        $trang_thai,
-        $mo_ta,
-        $hinh_anh
-    ) {
-        try {
+    public function updateSanPham($san_pham_id,
+                                        $ten_san_pham, 
+                                        $gia_san_pham, 
+                                        $gia_khuyen_mai, 
+                                        $so_luong, 
+                                        $ngay_nhap, 
+                                        $danh_muc_id, 
+                                        $trang_thai, 
+                                        $mo_ta, 
+                                        $hinh_anh){
+        try{
             $sql = 'UPDATE san_phams
                     SET
                         ten_san_pham = :ten_san_pham,
@@ -161,14 +152,13 @@ class AdminSanPham
 
             // Lấy id sản phẩm vừa thêm
             return true;
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function getDetailAnhSanPham($id)
-    {
-        try {
+    public function getDetailAnhSanPham($id){
+        try{
             $sql = 'SELECT * FROM hinh_anh_san_phams WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
@@ -176,14 +166,13 @@ class AdminSanPham
             $stmt->execute([':id' => $id]);
 
             return $stmt->fetch();
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function updateAnhSanPham($id, $new_file)
-    {
-        try {
+    public function updateAnhSanPham($id, $new_file){
+        try{
             $sql = 'UPDATE hinh_anh_san_phams
                     SET
                         link_hinh_anh = :new_file
@@ -199,14 +188,13 @@ class AdminSanPham
 
             // Lấy id sản phẩm vừa thêm
             return true;
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function destroyAnhSanPham($id)
-    {
-        try {
+    public function destroyAnhSanPham($id){
+        try{
             $sql = 'DELETE FROM hinh_anh_san_phams WHERE id=:id';
 
             $stmt = $this->conn->prepare($sql);
@@ -216,13 +204,12 @@ class AdminSanPham
             ]);
 
             return true;
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    public function destroySanPham($id)
-    {
-        try {
+    public function destroySanPham($id){
+        try{
             $sql = 'DELETE FROM san_phams WHERE id=:id';
 
             $stmt = $this->conn->prepare($sql);
@@ -232,11 +219,11 @@ class AdminSanPham
             ]);
 
             return true;
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    public function getBinhLuanFromKhachHang($id)
+     public function getBinhLuanFromKhachHang($id)
     {
         try {
             $sql = 'SELECT binh_luans.*, san_phams.ten_san_pham
@@ -255,9 +242,8 @@ class AdminSanPham
         }
     }
 
-    public function getDetailBinhLuan($id)
-    {
-        try {
+    public function getDetailBinhLuan($id){
+        try{
             $sql = 'SELECT * FROM binh_luans WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
@@ -265,14 +251,13 @@ class AdminSanPham
             $stmt->execute([':id' => $id]);
 
             return $stmt->fetch();
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function updateTrangThaiBinhLuan($id, $trang_thai)
-    {
-        try {
+    public function updateTrangThaiBinhLuan($id, $trang_thai){
+        try{
             $sql = 'UPDATE binh_luans
                     SET
                         trang_thai = :trang_thai
@@ -288,7 +273,7 @@ class AdminSanPham
 
             // Lấy id sản phẩm vừa thêm
             return true;
-        } catch (Exception $e) {
+        }catch(Exception $e){
             echo "Lỗi: " . $e->getMessage();
         }
     }
@@ -312,5 +297,4 @@ class AdminSanPham
         }
     }
 }
-
-
+                
