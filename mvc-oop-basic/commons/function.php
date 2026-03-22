@@ -2,6 +2,8 @@
 
 // Kết nối CSDL qua PDO
 function connectDB() {
+function connectDB()
+{
     // Kết nối CSDL
     $host = DB_HOST;
     $port = DB_PORT;
@@ -16,6 +18,7 @@ function connectDB() {
         // cài đặt chế độ trả dữ liệu
         $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
+
         return $conn;
     } catch (PDOException $e) {
         echo ("Connection failed: " . $e->getMessage());
@@ -32,12 +35,16 @@ function formatPrice($price)
 
 // Thêm file
 function uploadFile($file, $folderUpload){
+// Thêm file 
+function uploadFile($file, $folderUpload)
+{
     $pathStorage = $folderUpload . time() . $file['name'];
 
     $from = $file['tmp_name'];
     $to = PATH_ROOT . $pathStorage;
 
     if(move_uploaded_file($from, $to)){
+    if (move_uploaded_file($from, $to)) {
         return $pathStorage;
     }
     return null;
@@ -47,6 +54,12 @@ function uploadFile($file, $folderUpload){
 function deleteFile($file){
     $pathDelete = PATH_ROOT . $file;
     if(file_exists($pathDelete)){
+
+// Xóa file 
+function deleteFile($file)
+{
+    $pathDelete = PATH_ROOT . $file;
+    if (file_exists($pathDelete)) {
         unlink($pathDelete);
     }
 }
@@ -59,17 +72,29 @@ function deleteSessionError(){
         unset($_SESSION['flash']);
         session_unset();
         session_destroy();
+// Xóa session sau khi load trang 
+function deleteSessionError()
+{
+    if (isset($_SESSION['flash'])) {
+        // Hủy session sau khi đã tải trang 
+        unset($_SESSION['flash']);
+        unset($_SESSION['error']);
+        // session_unset();
     }
 }
 
 // Upload - update album ảnh
 function uploadFileAlbum($file, $folderUpload, $key){
+
+function uploadFileAlbum($file, $folderUpload, $key)
+{
     $pathStorage = $folderUpload . time() . $file['name'][$key];
 
     $from = $file['tmp_name'][$key];
     $to = PATH_ROOT . $pathStorage;
 
     if(move_uploaded_file($from, $to)){
+    if (move_uploaded_file($from, $to)) {
         return $pathStorage;
     }
     return null;
@@ -98,3 +123,8 @@ function checkLoginAdmin()
     }
 }
 // Debug
+
+function formatPrice($price)
+{
+    return number_format($price, 0, ',', '.');
+}

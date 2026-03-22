@@ -48,6 +48,10 @@ match ($act) {
     'chi-tiet-san-pham' => (new AdminSanPhamController())->detailSanPham(),
 
 
+
+
+// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
+
     // route quản lý đơn hàng
 
     'don-hang' => (new AdminDonHangController())->danhSachDonhang(),
