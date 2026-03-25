@@ -144,6 +144,11 @@
                 <a href="./assets/index2.html" class="h1">BÁN GIÀY DÉP</a>
             </div>
             <div class="card-body">
+                <?php if (isset($_SESSION['error'])) { ?>
+                    <p class="text-danger login-box-msg"><?= $_SESSION['error'] ?></p>
+                <?php } else {?> 
+                <p class="login-box-msg">Vui lòng đăng nhập</p>
+                <?php } ?>
                 <?php if (!empty($_SESSION['error'])): ?>
 
                     <?php if (is_array($_SESSION['error'])): ?>

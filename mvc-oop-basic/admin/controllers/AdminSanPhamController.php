@@ -326,7 +326,7 @@ class AdminSanPhamController
         exit();
     }
 
-    public function detailSanPham()
+     public function detailSanPham()
     {
         //Lấy ra thông tin sản phẩm cần sửa
         $id = $_GET['id_san_pham'];
@@ -334,6 +334,7 @@ class AdminSanPhamController
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
 
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+        $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
 
         if ($sanPham) {
             //Nếu tồn tại thì trả về form sửa sản phẩm

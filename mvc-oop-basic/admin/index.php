@@ -22,7 +22,11 @@ require_once './models/AdminTaiKhoan.php';
 
 
 // Route
-$act = $_GET['act'] ?? '/';
+$act = $_GET['act'] ?? 'list-tai-khoan-quan-tri';
+
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+    checkLoginAdmin();
+}
 
 
 if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
@@ -70,6 +74,9 @@ match ($act) {
     'them-quan-tri' => (new AdminTaiKhoanController())->postAddQuanTri(),
     'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
     'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
+
+    //route bình luận
+    'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
 
     // route reset password tài khoản
     'reset-password' => (new AdminTaiKhoanController())->resetPassword(),

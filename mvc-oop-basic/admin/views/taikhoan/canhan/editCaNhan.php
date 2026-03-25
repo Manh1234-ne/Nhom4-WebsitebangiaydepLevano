@@ -51,6 +51,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Last name:</label>
                             <div class="col-lg-12">
+                                <input class="form-control" type="text" value="">
                                 <input class="form-control" type="text" value="bootdey">
                             </div>
                         </div>
