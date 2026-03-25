@@ -69,7 +69,7 @@
                                                <li> <a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li> 
                                             <?php } ?>
                                             <li><a href="login-register.html">Đăng kí</a></li>
-                                            <li><a href="my-account.html">tài khoản</a></li>
+                                            <li><a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>">tài khoản</a></li>
                                             <li><a href="<?= BASE_URL . '?act=lich_su_mua_hang' ?>">Đơn hàng</a></li>
                                         </ul>
                                     </li>

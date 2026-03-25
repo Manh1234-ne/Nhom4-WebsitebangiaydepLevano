@@ -36,4 +36,21 @@ class TaiKhoan
             return false;
         }
     }
+    public function getUserByEmail($email){
+    $sql = "SELECT * FROM tai_khoans WHERE email = :email";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([':email' => $email]);
+    return $stmt->fetch();
+}
+
+public function updateUser($data){
+    $sql = "UPDATE tai_khoans 
+            SET ho_ten = :ho_ten,
+                so_dien_thoai = :so_dien_thoai,
+                dia_chi = :dia_chi
+            WHERE email = :email";
+
+    $stmt = $this->conn->prepare($sql);
+    return $stmt->execute($data);
+}
 }
