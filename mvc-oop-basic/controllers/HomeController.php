@@ -422,50 +422,52 @@ class HomeController
         }
     }
 
-    public function thongTinCaNhan(){
-    if(!isset($_SESSION['user_client'])){
-        header("Location: " . BASE_URL . '?act=login');
-        exit;
+    public function thongTinCaNhan()
+    {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit;
+        }
+
+        $email = $_SESSION['user_client']['email'];
+
+        $user = $this->modelTaiKhoan->getUserByEmail($email);
+
+        require_once './views/thongtin.php';
     }
 
-    $email = $_SESSION['user_client']['email'];
+    public function updateProfile()
+    {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit;
+        }
 
-    $user = $this->modelTaiKhoan->getUserByEmail($email);
+        $email = $_SESSION['user_client']['email'];
 
-    require_once './views/thongtin.php';
-}
+        // Lấy dữ liệu
+        $ho_ten = $_POST['ho_ten'] ?? '';
+        $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
+        $dia_chi = $_POST['dia_chi'] ?? '';
 
-public function updateProfile(){
-    if(!isset($_SESSION['user_client'])){
-        header("Location: " . BASE_URL . '?act=login');
-        exit;
-    }
+        // Validate đơn giản
+        if (empty($ho_ten)) {
+            $_SESSION['error'] = "Họ tên không được để trống";
+            header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
+            exit;
+        }
 
-    $email = $_SESSION['user_client']['email'];
+        $data = [
+            'ho_ten' => $ho_ten,
+            'so_dien_thoai' => $so_dien_thoai,
+            'dia_chi' => $dia_chi,
+            'email' => $email
+        ];
 
-    // Lấy dữ liệu
-    $ho_ten = $_POST['ho_ten'] ?? '';
-    $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
-    $dia_chi = $_POST['dia_chi'] ?? '';
+        $this->modelTaiKhoan->updateUser($data);
 
-    // Validate đơn giản
-    if(empty($ho_ten)){
-        $_SESSION['error'] = "Họ tên không được để trống";
+        $_SESSION['success'] = "Cập nhật thành công";
+
         header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
-        exit;
     }
-
-    $data = [
-        'ho_ten' => $ho_ten,
-        'so_dien_thoai' => $so_dien_thoai,
-        'dia_chi' => $dia_chi,
-        'email' => $email
-    ];
-
-    $this->modelTaiKhoan->updateUser($data);
-
-    $_SESSION['success'] = "Cập nhật thành công";
-
-    header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
-}
 }

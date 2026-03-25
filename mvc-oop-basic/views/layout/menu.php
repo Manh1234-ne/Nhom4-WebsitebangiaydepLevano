@@ -57,7 +57,7 @@
                                 </form>
                             </div>
                             <div class="header-configure-area">
-<ul class="nav justify-content-end">
+                                <ul class="nav justify-content-end">
                                     <li class="user-email"><?= htmlspecialchars($_SESSION['user_client']['ho_ten'] ?? '') ?></li>
                                     <li class="user-hover">
                                         <a href="#">
@@ -66,7 +66,7 @@
                                         <ul class="dropdown-list">
                                             <?php if (isset($_SESSION['user_client'])) { ?>
                                                 <li><a href="<?= BASE_URL . '?act=lich_su_mua_hang' ?>">Đơn hàng</a></li>
-                                                <li><a href="#">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>">Tài khoản</a></li>
                                                 <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                                             <?php } else { ?>
                                                 <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
