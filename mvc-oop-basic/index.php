@@ -28,6 +28,10 @@ match ($act) {
     // auth
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
+    'logout' => (new HomeController())->logout(),
+    'signup', 'singup' => (new HomeController())->formSignup(),
+    'post-signup' => (new HomeController())->postSignup(),
+
     'them-gio-hang' => (new HomeController())->addGioHang(),
     'gio-hang' => (new HomeController())->gioHang(),
     'thanh-toan' => (new HomeController())->thanhToan(),

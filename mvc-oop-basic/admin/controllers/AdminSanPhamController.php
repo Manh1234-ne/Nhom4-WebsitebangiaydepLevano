@@ -316,8 +316,8 @@ class AdminSanPhamController
             deleteFile($sanPham['hinh_anh']);
             $this->modelSanPham->destroySanPham($id);
         }
-        if($listAnhSanPham){
-            foreach($listAnhSanPham as $key=>$anhSP){
+        if ($listAnhSanPham) {
+            foreach ($listAnhSanPham as $key => $anhSP) {
                 deleteFile($anhSP['link_hinh_anh']);
                 $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
             }
