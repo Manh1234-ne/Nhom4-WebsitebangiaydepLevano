@@ -316,8 +316,13 @@ class AdminSanPhamController
             deleteFile($sanPham['hinh_anh']);
             $this->modelSanPham->destroySanPham($id);
         }
+<<<<<<< HEAD
         if($listAnhSanPham){
             foreach($listAnhSanPham as $key=>$anhSP){
+=======
+        if ($listAnhSanPham) {
+            foreach ($listAnhSanPham as $key => $anhSP) {
+>>>>>>> origin/leanhtao-feature
                 deleteFile($anhSP['link_hinh_anh']);
                 $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
             }
