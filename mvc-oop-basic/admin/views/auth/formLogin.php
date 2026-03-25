@@ -149,6 +149,19 @@
                 <?php } else {?> 
                 <p class="login-box-msg">Vui lòng đăng nhập</p>
                 <?php } ?>
+                <?php if (!empty($_SESSION['error'])): ?>
+
+                    <?php if (is_array($_SESSION['error'])): ?>
+                        <?php foreach ($_SESSION['error'] as $err): ?>
+                            <p class="text-danger login-box-msg"><?= $err ?></p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="text-danger login-box-msg"><?= $_SESSION['error'] ?></p>
+                    <?php endif; ?>
+
+                <?php else: ?>
+                    <p class="login-box-msg">Vui lòng đăng nhập</p>
+                <?php endif; ?>
 
                 <form action="<?= BASE_URL_ADMIN . '?act=check-login-admin' ?>" method="post">
                     <div class="input-group mb-3">
