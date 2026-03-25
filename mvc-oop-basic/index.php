@@ -28,8 +28,14 @@ match ($act) {
     // auth
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
+    'logout' => (new HomeController())->logout(),
+    'signup', 'singup' => (new HomeController())->formSignup(),
+    'post-signup' => (new HomeController())->postSignup(),
+
     'them-gio-hang' => (new HomeController())->addGioHang(),
     'gio-hang' => (new HomeController())->gioHang(),
+    'xoa-gio-hang' => (new HomeController())->xoaGioHang(),
+    'cap-nhat-gio-hang' => (new HomeController())->capNhatGioHang(),
     'thanh-toan' => (new HomeController())->thanhToan(),
     'xu-ly-thanh-toan' => (new HomeController())->postThanhToan(),
     'lich_su_mua_hang' => (new HomeController())->lichSuMuaHang(),

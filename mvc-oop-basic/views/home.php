@@ -835,7 +835,7 @@
     <!-- featured product area end -->
 
     <!-- testimonial area start -->
-
+    
     <!-- testimonial area end -->
 
     <!-- group product start -->

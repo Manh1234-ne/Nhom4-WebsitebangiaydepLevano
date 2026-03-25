@@ -22,13 +22,11 @@ class SanPham
             $stmt->execute();
 
             return $stmt->fetchAll();
-
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    
 
     public function getDetailSanPham($id)
     {

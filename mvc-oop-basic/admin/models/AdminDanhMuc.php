@@ -18,12 +18,13 @@ class AdminDanhMuc {
             $stmt->execute();
 
             return $stmt->fetchAll();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    public function insertDanhMuc($ten_danh_muc, $mo_ta){
-        try{
+    public function insertDanhMuc($ten_danh_muc, $mo_ta)
+    {
+        try {
             $sql = 'INSERT INTO danh_mucs (ten_danh_muc, mo_ta) VALUES (:ten_danh_muc, :mo_ta)';
 
             $stmt = $this->conn->prepare($sql);
@@ -34,13 +35,14 @@ class AdminDanhMuc {
             ]);
 
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function getDetailDanhMuc($id){
-        try{
+    public function getDetailDanhMuc($id)
+    {
+        try {
             $sql = 'SELECT * FROM danh_mucs WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
@@ -50,12 +52,13 @@ class AdminDanhMuc {
             ]);
 
             return $stmt->fetch();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    public function updateDanhMuc($id, $ten_danh_muc, $mo_ta){
-        try{
+    public function updateDanhMuc($id, $ten_danh_muc, $mo_ta)
+    {
+        try {
             $sql = 'UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc, mo_ta = :mo_ta WHERE id=:id';
 
             $stmt = $this->conn->prepare($sql);
@@ -67,13 +70,14 @@ class AdminDanhMuc {
             ]);
 
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    public function destroyDanhMuc($id){
-        try{
+    public function destroyDanhMuc($id)
+    {
+        try {
             $sql = 'DELETE FROM danh_mucs WHERE id=:id';
 
             $stmt = $this->conn->prepare($sql);
@@ -83,9 +87,9 @@ class AdminDanhMuc {
             ]);
 
             return true;
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
-
+    
 }

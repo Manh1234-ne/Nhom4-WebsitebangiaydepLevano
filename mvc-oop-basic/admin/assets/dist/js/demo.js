@@ -11,6 +11,7 @@
   'use strict'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // setTimeout(function () {
   //   if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
   //     localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
@@ -19,6 +20,8 @@
   //   }
   // }, 1000)
 =======
+=======
+>>>>>>> origin/hoa
   setTimeout(function () {
     if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
       localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
@@ -26,7 +29,19 @@
       alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
     }
   }, 1000)
+<<<<<<< HEAD
 >>>>>>> leanhtao-feature
+=======
+=======
+  // setTimeout(function () {
+  //   if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
+  //     localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
+  //     // eslint-disable-next-line no-alert
+  //     alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
+  //   }
+  // }, 1000)
+>>>>>>> Manh1234-ne
+>>>>>>> origin/hoa
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
