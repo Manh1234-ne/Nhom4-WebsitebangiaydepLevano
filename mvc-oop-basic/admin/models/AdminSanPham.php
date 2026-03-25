@@ -104,7 +104,7 @@ class AdminSanPham
 
     public function getListAnhSanPham($id){
         try{
-$sql = 'SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id';
+            $sql = 'SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id';
 
             $stmt = $this->conn->prepare($sql);
 
