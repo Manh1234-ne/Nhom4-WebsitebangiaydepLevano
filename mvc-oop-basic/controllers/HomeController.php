@@ -198,6 +198,55 @@ class HomeController
         }
     }
 
+    public function capNhatGioHang()
+    {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit();
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = $_SESSION['user_client'];
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+
+            if ($gioHang && isset($_POST['so_luong']) && is_array($_POST['so_luong'])) {
+                foreach ($_POST['so_luong'] as $san_pham_id => $so_luong) {
+                    $so_luong = (int)$so_luong;
+                    if ($so_luong > 0) {
+                        $this->modelGioHang->updateSoLuong($gioHang['id'], $san_pham_id, $so_luong);
+                    }
+                }
+            }
+        }
+
+        header("Location: " . BASE_URL . '?act=gio-hang');
+        exit();
+    }
+
+    public function xoaGioHang()
+    {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit();
+        }
+
+        $user = $_SESSION['user_client'];
+        $gioHang = $this->modelGioHang->getGioHangFromUser($user['id']);
+
+        if (!$gioHang) {
+            header("Location: " . BASE_URL . '?act=gio-hang');
+            exit();
+        }
+
+        $sanPhamId = $_GET['id_san_pham'] ?? null;
+        if ($sanPhamId) {
+            $this->modelGioHang->deleteDetailGioHangItem($gioHang['id'], $sanPhamId);
+        }
+
+        header("Location: " . BASE_URL . '?act=gio-hang');
+        exit();
+    }
+
     public function thanhToan()
     {
         if (isset($_SESSION['user_client'])) {
