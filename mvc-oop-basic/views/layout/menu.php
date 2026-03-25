@@ -58,14 +58,20 @@
                             </div>
                             <div class="header-configure-area">
                                 <ul class="nav justify-content-end">
+                                    <li class="user-email"><?= htmlspecialchars($_SESSION['user_client']['email'] ?? '') ?></li>
                                     <li class="user-hover">
                                         <a href="#">
                                             <i class="pe-7s-user"></i>
                                         </a>
                                         <ul class="dropdown-list">
-                                            <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
-                                            <li><a href="login-register.html">Đăng kí</a></li>
-                                            <li><a href="my-account.html">tài khoản</a></li>
+                                            <?php if (isset($_SESSION['user_client'])) { ?>
+                                                <li><a href="<?= BASE_URL . '?act=lich_su_mua_hang' ?>">Đơn hàng</a></li>
+                                                <li><a href="#">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
+                                            <?php } else { ?>
+                                                <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=signup' ?>">Đăng kí</a></li>
+                                            <?php } ?>
                                         </ul>
                                     </li>
                                     <li>
