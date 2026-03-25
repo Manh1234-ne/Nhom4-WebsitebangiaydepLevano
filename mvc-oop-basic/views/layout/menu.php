@@ -57,8 +57,8 @@
                                 </form>
                             </div>
                             <div class="header-configure-area">
-                                <ul class="nav justify-content-end">
-                                    <li class="user-email"><?= htmlspecialchars($_SESSION['user_client']['email'] ?? '') ?></li>
+<ul class="nav justify-content-end">
+                                    <li class="user-email"><?= htmlspecialchars($_SESSION['user_client']['ho_ten'] ?? '') ?></li>
                                     <li class="user-hover">
                                         <a href="#">
                                             <i class="pe-7s-user"></i>
