@@ -40,8 +40,18 @@
             <h5 class="text-center">Đăng kí</h5>
 
             <?php if (isset($_SESSION['error'])) { ?>
-                <div class="alert alert-danger text-center">
-                    <?= $_SESSION['error'] ?>
+                <div class="alert alert-danger">
+
+                    <?php
+                    if (is_array($_SESSION['error'])) {
+                        foreach ($_SESSION['error'] as $error) {
+                            echo "<p class='text-center'>$error</p>";
+                        }
+                    } else {
+                        echo "<p class='text-center'>" . $_SESSION['error'] . "</p>";
+                    }
+                    ?>
+
                 </div>
             <?php unset($_SESSION['error']);
             } ?>
