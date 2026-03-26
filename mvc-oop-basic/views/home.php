@@ -191,49 +191,16 @@
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
                         <a href="#">
-                            <img src="assets/img/banner/img1-top.jpg" alt="product banner">
+                            <img src="assets/banner1.png" alt="product banner">
                         </a>
-                        <div class="banner-content text-right">
-                            <h5 class="banner-text1">BEAUTIFUL</h5>
-                            <h2 class="banner-text2">Wedding<span>Rings</span></h2>
-                            <a href="shop.html" class="btn btn-text">Shop Now</a>
-                        </div>
                     </figure>
                 </div>
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
                         <a href="#">
-                            <img src="assets/img/banner/img2-top.jpg" alt="product banner">
+                            <img src="assets/banner2.png" alt="product banner">
                         </a>
-                        <div class="banner-content text-center">
-                            <h5 class="banner-text1">EARRINGS</h5>
-                            <h2 class="banner-text2">Tangerine Floral <span>Earring</span></h2>
-                            <a href="shop.html" class="btn btn-text">Shop Now</a>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-sm-6">
-                    <figure class="banner-statistics mt-20">
-                        <a href="#">
-                            <img src="assets/img/banner/img3-top.jpg" alt="product banner">
-                        </a>
-                        <div class="banner-content text-center">
-                            <h5 class="banner-text1">NEW ARRIVALLS</h5>
-                            <h2 class="banner-text2">Pearl<span>Necklaces</span></h2>
-                            <a href="shop.html" class="btn btn-text">Shop Now</a>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-sm-6">
-                    <figure class="banner-statistics mt-20">
-                        <a href="#">
-                            <img src="assets/img/banner/img4-top.jpg" alt="product banner">
-                        </a>
-                        <div class="banner-content text-right">
-                            <h5 class="banner-text1">NEW DESIGN</h5>
-                            <h2 class="banner-text2">Diamond<span>Jewelry</span></h2>
-                            <a href="shop.html" class="btn btn-text">Shop Now</a>
-                        </div>
+
                     </figure>
                 </div>
             </div>
@@ -326,13 +293,8 @@
                     <div class="group-product-banner">
                         <figure class="banner-statistics">
                             <a href="#">
-                                <img src="assets/img/banner/img-bottom-banner.jpg" alt="product banner">
+                                <img src="assets/Screenshot 2026-03-26 225005.png" alt="product banner">
                             </a>
-                            <div class="banner-content banner-content_style3 text-center">
-                                <h6 class="banner-text1">BEAUTIFUL</h6>
-                                <h2 class="banner-text2">Wedding Rings</h2>
-                                <a href="shop.html" class="btn btn-text">Shop Now</a>
-                            </div>
                         </figure>
                     </div>
                 </div>
@@ -340,7 +302,7 @@
                     <div class="categories-group-wrapper">
                         <!-- section title start -->
                         <div class="section-title-append">
-                            <h4>Sản phẩm bán chạy nhất</h4>
+                            <h4>Sản phẩm bán chạy</h4>
                             <div class="slick-append"></div>
                         </div>
                         <!-- section title start -->
@@ -394,7 +356,7 @@
                     <div class="categories-group-wrapper">
                         <!-- section title start -->
                         <div class="section-title-append">
-                            <h4>Sản phẩm đang giảm giá</h4>
+                            <h4>Sản phẩm giảm giá</h4>
                             <div class="slick-append"></div>
                         </div>
                         <!-- section title start -->
@@ -469,15 +431,15 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/img/blog/blog-img1.jpg" alt="blog image">
+                                    <img src="assets/Screenshot 2026-03-26 223013.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
                                 <div class="blog-meta">
-                                    <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">Celebrity Daughter Opens Up About Having Her Eye Color Changed</a>
+                                    <a href="blog-details.html">PGA LÀ GÌ? NHỮNG ĐIỀU CHƯA AI NÓI VỀ NGHỀ PG</a>
                                 </h5>
                             </div>
                         </div>
@@ -487,15 +449,15 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/img/blog/blog-img2.jpg" alt="blog image">
+                                    <img src="assets/Screenshot 2026-03-26 223100.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
                                 <div class="blog-meta">
-                                    <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">Children Left Home Alone For 4 Days In TV series Experiment</a>
+                                    <a href="blog-details.html">FASHION SHOW LÀ GÌ? TÌM HIỂU VỀ THẾ GIỚI TRÌNH DIỄN THỜI TRANG</a>
                                 </h5>
                             </div>
                         </div>
@@ -505,15 +467,15 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/img/blog/blog-img3.jpg" alt="blog image">
+                                    <img src="assets/Screenshot 2026-03-26 222636.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
                                 <div class="blog-meta">
-                                    <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">Lotto Winner Offering Up Money To Any Man That Will Date Her</a>
+                                    <a href="blog-details.html">TOP MẪU VÁY 2 DÂY DÁNG DÀI ĐẸP VÀ CÁCH PHỐI SÀNH ĐIỆU 2026</a>
                                 </h5>
                             </div>
                         </div>
@@ -523,15 +485,15 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/img/blog/blog-img4.jpg" alt="blog image">
+                                    <img src="assets/Screenshot 2026-03-26 222704.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
                                 <div class="blog-meta">
-                                    <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">People are Willing Lie When Comes Money, According to Research</a>
+                                    <a href="blog-details.html">DA BÁNH MẬT NÊN MẶC MÀU GÌ ĐẸP, CUỐN HÚT 2026</a>
                                 </h5>
                             </div>
                         </div>
@@ -541,15 +503,15 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/img/blog/blog-img5.jpg" alt="blog image">
+                                    <img src="assets/Screenshot 2026-03-26 222749.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
                                 <div class="blog-meta">
-                                    <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">romantic Love Stories Of Hollywoodâ€™s Biggest Celebrities</a>
+                                    <a href="blog-details.html">FREESIZE LÀ GÌ? PHÂN BIỆT VỚI ONE SIZE, BIG SIZE? PHỐI ĐỒ FREESIZE ĐẸP</a>
                                 </h5>
                             </div>
                         </div>
@@ -639,8 +601,8 @@
                 </div>
 
                 <div class="minicart-button">
-                    <a href="cart.html"><i class="fa fa-shopping-cart"></i> View Cart</a>
-                    <a href="cart.html"><i class="fa fa-share"></i> Checkout</a>
+                    <a href="<?= BASE_URL . '?act=gio-hang' ?>"><i class="fa fa-shopping-cart"></i> View Cart</a>
+                    <a href="<?= BASE_URL . '?act=thanh-toan' ?>"><i class="fa fa-share"></i> Checkout</a>
                 </div>
             </div>
         </div>
