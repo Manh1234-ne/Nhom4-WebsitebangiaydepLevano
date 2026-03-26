@@ -23,6 +23,11 @@ class HomeController
         require_once './views/home.php';
     }
 
+    public function gioiThieu()
+    {
+        require_once './views/gioiThieu.php';
+    }
+
     public function chiTietSanPham()
     {
         $id = $_GET['id_san_pham'];
