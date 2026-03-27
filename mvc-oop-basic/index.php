@@ -38,4 +38,5 @@ match ($act) {
     'thong-tin-ca-nhan' => (new HomeController())->thongTinCaNhan(),
     'update-profile' => (new HomeController())->updateProfile(),
     'lien_he' => (new HomeController())->lienHe(),
+    'dashboard' => (new HomeController())->dashboard(),
 };
