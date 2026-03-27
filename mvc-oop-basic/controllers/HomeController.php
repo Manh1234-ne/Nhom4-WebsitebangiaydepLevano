@@ -364,4 +364,9 @@ public function updateProfile(){
 
     header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
 }
+
+public function lienHe()
+    {
+        require_once './views/lienHe.php';
+    }
 }
