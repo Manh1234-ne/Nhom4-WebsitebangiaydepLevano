@@ -433,4 +433,15 @@ class HomeController
 
     require_once './views/SanPham.php'; // file shop bạn gửi
 }
+
+
+public function lienHe()
+    {
+        require_once './views/lienHe.php';
+    }
+
+    public function dashboard()
+    {
+        require_once './views/dashboard.php';
+    }
 }
