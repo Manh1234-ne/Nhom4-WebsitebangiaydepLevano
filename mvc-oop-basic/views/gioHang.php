@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-
     <div class="cart-main-wrapper section-padding">
         <div class="container">
             <div class="section-bg-color">

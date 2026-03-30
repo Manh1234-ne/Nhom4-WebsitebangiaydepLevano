@@ -41,6 +41,7 @@ match ($act) {
     'lich_su_mua_hang' => (new HomeController())->lichSuMuaHang(),
     'chi_tiet_mua_hang' => (new HomeController())->chiTietMuaHang(),
     'huy_don_hang' => (new HomeController())->huyDonHang(),
-    'thong-tin-ca-nhan' => (new HomeController())->thongTinCaNhan(),
-    'update-profile' => (new HomeController())->updateProfile(),
+
+
+    'products' => (new HomeController())->Products(),
 };
