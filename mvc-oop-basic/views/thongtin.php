@@ -65,12 +65,12 @@
                         <div class="col-lg-3 col-md-4">
                             <div class="myaccount-tab-menu nav" role="tablist">
                                 <a href="<?= BASE_URL . '?act=dashboard' ?>"><i class="fa fa-dashboard"></i> Dashboard</a>
-                                <a href="<?= BASE_URL . '?act=gio-hang' ?>" ><i class="fa fa-cart-arrow-down"></i>
+                                <a href="<?= BASE_URL . '?act=gio-hang' ?>"><i class="fa fa-cart-arrow-down"></i>
                                     Orders</a>
-                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>" ><i class="fa fa-credit-card"></i>
+                                <a href="<?= BASE_URL . '?act=thanh-toan' ?>"><i class="fa fa-credit-card"></i>
                                     Payment
                                     Method</a>
-                                <a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>" ><i class="fa fa-user"></i> Account
+                                <a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>"><i class="fa fa-user"></i> Account
                                     Details</a>
                             </div>
                         </div>

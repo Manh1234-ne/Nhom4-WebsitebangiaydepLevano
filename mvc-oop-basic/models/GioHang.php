@@ -16,19 +16,25 @@ class GioHang
                 ORDER BY id DESC 
                 LIMIT 1"; // 🔥 LẤY GIỎ MỚI NHẤT
 
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':tai_khoan_id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $e) {
-        echo "Lỗi truy vấn: " . $e->getMessage();
-    }
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':tai_khoan_id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Lỗi truy vấn: " . $e->getMessage();
+        }
     }
     public function getDetailGioHang($id)
     {
         try {
-            $sql = 'SELECT chi_tiet_gio_hangs.*, san_phams.ten_san_pham, san_phams.hinh_anh, san_phams.gia_san_pham, san_phams.gia_khuyen_mai
-            INNER JOIN san_phams ON chi_tiet_gio_hangs.san_pham_id = san_phams.id 
-            WHERE chi_tiet_gio_hangs.gio_hang_id = :gio_hang_id';
+            $sql = 'SELECT chi_tiet_gio_hangs.*, 
+               san_phams.ten_san_pham, 
+               san_phams.hinh_anh, 
+               san_phams.gia_san_pham, 
+               san_phams.gia_khuyen_mai
+        FROM chi_tiet_gio_hangs
+        INNER JOIN san_phams 
+            ON chi_tiet_gio_hangs.san_pham_id = san_phams.id 
+        WHERE chi_tiet_gio_hangs.gio_hang_id = :gio_hang_id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':gio_hang_id' => $id]);
             return $stmt->fetchAll();
