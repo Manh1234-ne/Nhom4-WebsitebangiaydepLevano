@@ -44,4 +44,5 @@ match ($act) {
 
 
     'products' => (new HomeController())->Products(),
+    'gioi-thieu' => (new HomeController())->gioiThieu(),
 };
