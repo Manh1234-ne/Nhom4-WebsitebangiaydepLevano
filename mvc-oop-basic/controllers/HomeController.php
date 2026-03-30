@@ -421,4 +421,11 @@ class HomeController
             die;
         }
     }
+
+    public function Products()
+{
+    $listSanPham = $this->modelSanPham->getAllSanPham();
+
+    require_once './views/SanPham.php'; // file shop bạn gửi
+}
 }

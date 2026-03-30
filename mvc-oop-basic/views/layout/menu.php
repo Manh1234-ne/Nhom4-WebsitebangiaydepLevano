@@ -30,11 +30,7 @@
 
                                         </li>
 
-                                        <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-
-                                            </ul>
+                                        <li><a href="<?= BASE_URL . '?act=products' ?>">Sản phẩm</a>
                                         </li>
                                         <li><a href="contact-us.html">Giới thiệu</a></li>
                                         <li><a href="contact-us.html">Liên hệ</a></li>
