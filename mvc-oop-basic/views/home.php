@@ -228,9 +228,10 @@
                             <div class="product-item">
                                 <figure class="product-thumb">
                                     <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                                        <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
-                                        <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
+                                        <img class="pri-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
+                                        <img class="sec-img" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="product">
                                     </a>
+
                                     <div class="product-badge">
                                         <?php
                                         $ngayNhap = new DateTime($sanPham['ngay_nhap']);
@@ -241,39 +242,45 @@
                                             <div class="product-label new">
                                                 <span>Mới</span>
                                             </div>
-                                        <?php } ?>
-                                        <?php if ($sanPham['gia_khuyen_mai']) { ?>
+                                        <?php
+                                        }
+                                        if ($sanPham['gia_khuyen_mai']) {
+                                        ?>
                                             <div class="product-label discount">
                                                 <span>Giảm giá</span>
                                             </div>
                                         <?php } ?>
                                     </div>
+
+                                    <div class="button-group">
+                                        <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                        <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
+                                    </div>
+
                                     <div class="cart-hover">
-                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>" class="btn btn-cart">
-                                            Xem chi tiết
-                                        </a>
+                                        <button class="btn btn-cart">add to cart</button>
                                     </div>
                                 </figure>
+
                                 <div class="product-caption text-center">
                                     <h6 class="product-name">
                                         <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
                                             <?= $sanPham['ten_san_pham'] ?>
                                         </a>
                                     </h6>
+
                                     <div class="price-box">
                                         <?php if ($sanPham['gia_khuyen_mai']) { ?>
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) ?>đ</span>
-                                            <span class="price-old">
-                                                <del><?= formatPrice($sanPham['gia_san_pham']) ?>đ</del>
-                                            </span>
+                                            <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) . 'đ'; ?></span>
+                                            <span class="price-old"><del><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></del></span>
                                         <?php } else { ?>
-                                            <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) ?>đ</span>
+                                            <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) . 'đ'; ?></span>
                                         <?php } ?>
                                     </div>
-
                                 </div>
                             </div>
-                        <?php endforeach ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
@@ -309,43 +316,28 @@
                         <!-- group list carousel start -->
                         <div class="group-list-item-wrapper">
                             <div class="group-list-carousel">
-
-                                <?php foreach ($listSanPham as $sanPham): ?>
-
-                                    <div class="group-slide-item">
-                                        <div class="group-item">
-
-                                            <div class="group-item-thumb">
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                                                    <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
-                                                </a>
+                                <?php foreach ($listSanPham as $sp): ?>
+                                <div class="group-slide-item">
+                                    <div class="group-item">
+                                        <div class="group-item-thumb">
+                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>">
+                                                <img class="pri-img" src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="product">
+                                            </a>
+                                        </div>
+                                        <div class="group-item-desc">
+                                            <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>"><?= $sp['ten_san_pham'] ?></a></h5>
+                                            <div class="price-box">
+                                                <?php if ($sp['gia_khuyen_mai']): ?>
+                                                    <span class="price-regular"><?= formatPrice($sp['gia_khuyen_mai']) ?>đ</span>
+                                                    <span class="price-old"><del><?= formatPrice($sp['gia_san_pham']) ?>đ</del></span>
+                                                <?php else: ?>
+                                                    <span class="price-regular"><?= formatPrice($sp['gia_san_pham']) ?>đ</span>
+                                                <?php endif; ?>
                                             </div>
-
-                                            <div class="group-item-desc">
-                                                <h5 class="group-product-name">
-                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                                                        <?= $sanPham['ten_san_pham'] ?>
-                                                    </a>
-                                                </h5>
-
-                                                <div class="price-box">
-                                                    <?php if ($sanPham['gia_khuyen_mai']) { ?>
-                                                        <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) ?>đ</span>
-                                                        <span class="price-old">
-                                                            <del><?= formatPrice($sanPham['gia_san_pham']) ?>đ</del>
-                                                        </span>
-                                                    <?php } else { ?>
-                                                        <span class="price-regular"><?= formatPrice($sanPham['gia_san_pham']) ?>đ</span>
-                                                    <?php } ?>
-                                                </div>
-
-                                            </div>
-
                                         </div>
                                     </div>
-
-                                <?php endforeach ?>
-
+                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <!-- group list carousel start -->
@@ -363,43 +355,24 @@
                         <!-- group list carousel start -->
                         <div class="group-list-item-wrapper">
                             <div class="group-list-carousel">
-
-                                <?php foreach ($listSanPham as $sanPham): ?>
-
-                                    <?php if ($sanPham['gia_khuyen_mai']) { ?>
-
-                                        <div class="group-slide-item">
-                                            <div class="group-item">
-
-                                                <div class="group-item-thumb">
-                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                                                        <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
-                                                    </a>
-                                                </div>
-
-                                                <div class="group-item-desc">
-                                                    <h5 class="group-product-name">
-                                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id']; ?>">
-                                                            <?= $sanPham['ten_san_pham'] ?>
-                                                        </a>
-                                                    </h5>
-
-                                                    <div class="price-box">
-                                                        <span class="price-regular"><?= formatPrice($sanPham['gia_khuyen_mai']) ?>đ</span>
-                                                        <span class="price-old">
-                                                            <del><?= formatPrice($sanPham['gia_san_pham']) ?>đ</del>
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-
+                                <?php foreach ($listSanPham as $sp): if (!$sp['gia_khuyen_mai']) continue; ?>
+                                <div class="group-slide-item">
+                                    <div class="group-item">
+                                        <div class="group-item-thumb">
+                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>">
+                                                <img class="pri-img" src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="product">
+                                            </a>
+                                        </div>
+                                        <div class="group-item-desc">
+                                            <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>"><?= $sp['ten_san_pham'] ?></a></h5>
+                                            <div class="price-box">
+                                                <span class="price-regular"><?= formatPrice($sp['gia_khuyen_mai']) ?>đ</span>
+                                                <span class="price-old"><del><?= formatPrice($sp['gia_san_pham']) ?>đ</del></span>
                                             </div>
                                         </div>
-
-                                    <?php } ?>
-
-                                <?php endforeach ?>
-
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <!-- group list carousel start -->

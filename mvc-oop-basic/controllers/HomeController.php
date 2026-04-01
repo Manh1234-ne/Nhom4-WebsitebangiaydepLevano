@@ -428,68 +428,116 @@ class HomeController
     }
 
     public function Products()
-{
-    $listSanPham = $this->modelSanPham->getAllSanPham();
+    {
+        $keyword = trim($_GET['keyword'] ?? '');
+        $danh_muc_id = $_GET['danh_muc_id'] ?? null;
 
-    require_once './views/SanPham.php'; // file shop bạn gửi
-}
+        $listSanPham = $this->modelSanPham->searchSanPham($keyword, $danh_muc_id);
+        $listDanhMuc = $this->modelSanPham->getAllDanhMuc();
 
+        require_once './views/SanPham.php';
+    }
 
-public function lienHe()
+    public function lienHe()
     {
         require_once './views/lienHe.php';
     }
 
     public function dashboard()
     {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit;
+        }
+
+        $user = $_SESSION['user_client'];
+        $taiKhoanId = $user['id'];
+
+        $donHangs = $this->modelDonHang->getDonHangFromUser($taiKhoanId);
+        $donHangs = is_array($donHangs) ? $donHangs : [];
+        $arrTrangThaiDonHang = $this->modelDonHang->getTrangThaIDonHang();
+        $trangThaiDonHang = is_array($arrTrangThaiDonHang)
+            ? array_column($arrTrangThaiDonHang, 'ten_trang_thai', 'id')
+            : [];
+
+        $soDonHang = count($donHangs);
+        $soDonChoXuLy = 0;
+        $tongChiTieu = 0;
+        $donGanDay = $donHangs;
+
+        foreach ($donHangs as $donHang) {
+            $trangThaiId = (int)($donHang['trang_thai_id'] ?? 0);
+            $tongTienDon = (float)($donHang['tong_tien'] ?? 0);
+
+            if (in_array($trangThaiId, [1, 2, 3], true)) {
+                $soDonChoXuLy++;
+            }
+
+            if (!in_array($trangThaiId, [11], true)) {
+                $tongChiTieu += $tongTienDon;
+            }
+        }
+
+        usort($donGanDay, function ($a, $b) {
+            return strtotime($b['ngay_dat'] ?? '') <=> strtotime($a['ngay_dat'] ?? '');
+        });
+        $donGanDay = array_slice($donGanDay, 0, 5);
+
+        $gioHang = $this->modelGioHang->getGioHangFromUser($taiKhoanId);
+        $chiTietGioHang = [];
+        if ($gioHang && isset($gioHang['id'])) {
+            $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            $chiTietGioHang = is_array($chiTietGioHang) ? $chiTietGioHang : [];
+        }
+        $soSanPhamTrongGio = 0;
+        foreach ($chiTietGioHang as $item) {
+            $soSanPhamTrongGio += (int)($item['so_luong'] ?? 0);
+        }
+
         require_once './views/dashboard.php';
     }
 
-    public function thongTinCaNhan(){
-    if(!isset($_SESSION['user_client'])){
-        header("Location: " . BASE_URL . '?act=login');
-        exit;
+    public function thongTinCaNhan()
+    {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit;
+        }
+
+        $email = $_SESSION['user_client']['email'];
+        $user = $this->modelTaiKhoan->getUserByEmail($email);
+
+        require_once './views/thongtin.php';
     }
 
-    $email = $_SESSION['user_client']['email'];
+    public function updateProfile()
+    {
+        if (!isset($_SESSION['user_client'])) {
+            header("Location: " . BASE_URL . '?act=login');
+            exit;
+        }
 
-    $user = $this->modelTaiKhoan->getUserByEmail($email);
+        $email = $_SESSION['user_client']['email'];
+        $ho_ten = $_POST['ho_ten'] ?? '';
+        $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
+        $dia_chi = $_POST['dia_chi'] ?? '';
 
-    require_once './views/thongtin.php';
-}
+        if (empty($ho_ten)) {
+            $_SESSION['error'] = "Họ tên không được để trống";
+            header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
+            exit;
+        }
 
-public function updateProfile(){
-    if(!isset($_SESSION['user_client'])){
-        header("Location: " . BASE_URL . '?act=login');
-        exit;
-    }
+        $data = [
+            'ho_ten' => $ho_ten,
+            'so_dien_thoai' => $so_dien_thoai,
+            'dia_chi' => $dia_chi,
+            'email' => $email
+        ];
 
-    $email = $_SESSION['user_client']['email'];
+        $this->modelTaiKhoan->updateUser($data);
 
-    // Lấy dữ liệu
-    $ho_ten = $_POST['ho_ten'] ?? '';
-    $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
-    $dia_chi = $_POST['dia_chi'] ?? '';
-
-    // Validate đơn giản
-    if(empty($ho_ten)){
-        $_SESSION['error'] = "Họ tên không được để trống";
+        $_SESSION['success'] = "Cập nhật thành công";
         header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
-        exit;
     }
-
-    $data = [
-        'ho_ten' => $ho_ten,
-        'so_dien_thoai' => $so_dien_thoai,
-        'dia_chi' => $dia_chi,
-        'email' => $email
-    ];
-
-    $this->modelTaiKhoan->updateUser($data);
-
-    $_SESSION['success'] = "Cập nhật thành công";
-
-    header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
-}
-
-}
+    }

@@ -123,7 +123,6 @@ class AdminSanPhamController
         }
     }
 
-
     //Phần sửa sản phẩm
     public function formEditSanPham()
     {
@@ -143,7 +142,6 @@ class AdminSanPhamController
         }
     }
 
-
     public function postEditSanPham()
     {
         //Kiểm xem dữ liệu có được submit lên hay không
@@ -155,7 +153,6 @@ class AdminSanPhamController
             $sanPhamOld = $this->modelSanPham->getDetailSanPham($san_pham_id);
             $old_file = $sanPhamOld['hinh_anh']; // Lấy ảnh cũ để phục vụ cho sửa ảnh
 
-
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
             $gia_san_pham = $_POST['gia_san_pham'] ?? '';
             $gia_khuyen_mai = $_POST['gia_khuyen_mai'] ?? '';
@@ -164,10 +161,7 @@ class AdminSanPhamController
             $danh_muc_id = $_POST['danh_muc_id'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
-
-
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
-
 
             //Tạo 1 mảng trống để chứa dữ liệu
             $errors = [];
@@ -193,9 +187,7 @@ class AdminSanPhamController
                 $errors['trang_thai'] = 'Trạng thái phải chọn';
             }
 
-
             $_SESSION['error'] = $errors;
-
 
             // logic sửa ảnh
             if (isset($hinh_anh) && $hinh_anh['error'] == UPLOAD_ERR_OK) {
@@ -299,8 +291,6 @@ class AdminSanPhamController
         }
     }
 
-
-
     //Phần xóa sản phẩm
     public function deleteSanPham()
     {
@@ -326,7 +316,7 @@ class AdminSanPhamController
         exit();
     }
 
-     public function detailSanPham()
+    public function detailSanPham()
     {
         //Lấy ra thông tin sản phẩm cần sửa
         $id = $_GET['id_san_pham'];
