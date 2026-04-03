@@ -35,10 +35,26 @@ class AdminBaoCaoThongKeController
         $tiLeChotDon = $tongDonHang > 0 ? round(($donHoanThanh / $tongDonHang) * 100, 1) : 0;
         $tiLeKhachHang = $tongDonHang > 0 ? round((count($khachHangs) / $tongDonHang) * 100, 1) : 0;
 
-        usort($sanPhams, function ($a, $b) {
-            return (int)($b['so_luong'] ?? 0) <=> (int)($a['so_luong'] ?? 0);
-        });
-        $topSanPham = array_slice($sanPhams, 0, 4);
+        $topSanPham = $this->modelSanPham->getSanPhamDoanhThuCaoNhat();
+        $topSanPham = is_array($topSanPham) ? $topSanPham : [];
+
+        $currentYear = (int)date('Y');
+        $doanhThuNamNayRaw = $this->modelDonHang->getDoanhThuTheoThangNam($currentYear);
+        $doanhThuNamTruocRaw = $this->modelDonHang->getDoanhThuTheoThangNam($currentYear - 1);
+
+        $doanhThuNamNay = array_fill(1, 12, 0);
+        $doanhThuNamTruoc = array_fill(1, 12, 0);
+
+        if ($doanhThuNamNayRaw) {
+            foreach ($doanhThuNamNayRaw as $row) {
+                $doanhThuNamNay[$row['thang']] = (float)$row['doanh_thu'];
+            }
+        }
+        if ($doanhThuNamTruocRaw) {
+            foreach ($doanhThuNamTruocRaw as $row) {
+                $doanhThuNamTruoc[$row['thang']] = (float)$row['doanh_thu'];
+            }
+        }
 
         require_once './views/home.php';
     }

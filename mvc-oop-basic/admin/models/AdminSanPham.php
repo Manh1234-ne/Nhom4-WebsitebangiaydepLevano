@@ -310,5 +310,23 @@ class AdminSanPham
         }
     }
 
-    
+    public function getSanPhamDoanhThuCaoNhat()
+    {
+        try {
+            $sql = 'SELECT san_phams.id, san_phams.ten_san_pham, san_phams.gia_san_pham, san_phams.gia_khuyen_mai, san_phams.hinh_anh, san_phams.so_luong, SUM(chi_tiet_don_hangs.thanh_tien) as tong_doanh_thu_sp
+                    FROM chi_tiet_don_hangs
+                    JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id = don_hangs.id
+                    JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id
+                    WHERE don_hangs.trang_thai_id >= 9
+                    GROUP BY san_phams.id, san_phams.ten_san_pham, san_phams.gia_san_pham, san_phams.gia_khuyen_mai, san_phams.hinh_anh, san_phams.so_luong
+                    ORDER BY tong_doanh_thu_sp DESC
+                    LIMIT 3';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return [];
+        }
+    }
 }

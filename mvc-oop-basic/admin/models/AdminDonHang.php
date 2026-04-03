@@ -114,4 +114,20 @@ class AdminDonHang
             echo "lỗi" . $e->getMessage();
         }
     }
+
+    public function getDoanhThuTheoThangNam($year)
+    {
+        try {
+            $sql = 'SELECT MONTH(ngay_dat) as thang, SUM(tong_tien) as doanh_thu 
+                    FROM don_hangs 
+                    WHERE YEAR(ngay_dat) = :year AND trang_thai_id >= 9 
+                    GROUP BY MONTH(ngay_dat)';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':year' => $year]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo "Lỗi " . $e->getMessage();
+            return [];
+        }
+    }
 }
