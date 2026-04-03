@@ -8,7 +8,7 @@
         <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/slider1.png">
+                <div class="hero-slider-item bg-img" data-bg="assets/bannersale.jpg" style="width:100%; height:600px; object-fit:cover;">
                     <div class="container">
                         <div class="row">
 
@@ -19,7 +19,7 @@
             <!-- single slider item start -->
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/slider2.png">
+                <div class="hero-slider-item bg-img" data-bg="assets/banner3.jpg" style="width:100%; height:600px; object-fit:cover;">
                     <div class="container">
                         <div class="row">
 
@@ -30,7 +30,7 @@
             <!-- single slider item start -->
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/slider3.png">
+                <div class="hero-slider-item bg-img" data-bg="assets/banner4.jpg" style="width:100%; height:600px; object-fit:cover;">
                     <div class="container">
                         <div class="row">
 
@@ -191,14 +191,14 @@
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
                         <a href="#">
-                            <img src="assets/banner1.png" alt="product banner">
+                            <img src="assets/banner2.jpg" alt="product banner">
                         </a>
                     </figure>
                 </div>
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
                         <a href="#">
-                            <img src="assets/banner2.png" alt="product banner">
+                            <img src="assets/banner10.jpg" alt="product banner">
                         </a>
 
                     </figure>
@@ -299,7 +299,7 @@
                     <div class="group-product-banner">
                         <figure class="banner-statistics">
                             <a href="#">
-                                <img src="assets/Screenshot 2026-03-26 225005.png" alt="product banner">
+                                <img src="assets/banner5.jpg" alt="product banner">
                             </a>
                         </figure>
                     </div>
@@ -317,26 +317,26 @@
                         <div class="group-list-item-wrapper">
                             <div class="group-list-carousel">
                                 <?php foreach ($listSanPham as $sp): ?>
-                                <div class="group-slide-item">
-                                    <div class="group-item">
-                                        <div class="group-item-thumb">
-                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>">
-                                                <img class="pri-img" src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="product">
-                                            </a>
-                                        </div>
-                                        <div class="group-item-desc">
-                                            <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>"><?= $sp['ten_san_pham'] ?></a></h5>
-                                            <div class="price-box">
-                                                <?php if ($sp['gia_khuyen_mai']): ?>
-                                                    <span class="price-regular"><?= formatPrice($sp['gia_khuyen_mai']) ?>đ</span>
-                                                    <span class="price-old"><del><?= formatPrice($sp['gia_san_pham']) ?>đ</del></span>
-                                                <?php else: ?>
-                                                    <span class="price-regular"><?= formatPrice($sp['gia_san_pham']) ?>đ</span>
-                                                <?php endif; ?>
+                                    <div class="group-slide-item">
+                                        <div class="group-item">
+                                            <div class="group-item-thumb">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>">
+                                                    <img class="pri-img" src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="product">
+                                                </a>
+                                            </div>
+                                            <div class="group-item-desc">
+                                                <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>"><?= $sp['ten_san_pham'] ?></a></h5>
+                                                <div class="price-box">
+                                                    <?php if ($sp['gia_khuyen_mai']): ?>
+                                                        <span class="price-regular"><?= formatPrice($sp['gia_khuyen_mai']) ?>đ</span>
+                                                        <span class="price-old"><del><?= formatPrice($sp['gia_san_pham']) ?>đ</del></span>
+                                                    <?php else: ?>
+                                                        <span class="price-regular"><?= formatPrice($sp['gia_san_pham']) ?>đ</span>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -356,22 +356,22 @@
                         <div class="group-list-item-wrapper">
                             <div class="group-list-carousel">
                                 <?php foreach ($listSanPham as $sp): if (!$sp['gia_khuyen_mai']) continue; ?>
-                                <div class="group-slide-item">
-                                    <div class="group-item">
-                                        <div class="group-item-thumb">
-                                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>">
-                                                <img class="pri-img" src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="product">
-                                            </a>
-                                        </div>
-                                        <div class="group-item-desc">
-                                            <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>"><?= $sp['ten_san_pham'] ?></a></h5>
-                                            <div class="price-box">
-                                                <span class="price-regular"><?= formatPrice($sp['gia_khuyen_mai']) ?>đ</span>
-                                                <span class="price-old"><del><?= formatPrice($sp['gia_san_pham']) ?>đ</del></span>
+                                    <div class="group-slide-item">
+                                        <div class="group-item">
+                                            <div class="group-item-thumb">
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>">
+                                                    <img class="pri-img" src="<?= BASE_URL . $sp['hinh_anh'] ?>" alt="product">
+                                                </a>
+                                            </div>
+                                            <div class="group-item-desc">
+                                                <h5 class="group-product-name"><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sp['id']; ?>"><?= $sp['ten_san_pham'] ?></a></h5>
+                                                <div class="price-box">
+                                                    <span class="price-regular"><?= formatPrice($sp['gia_khuyen_mai']) ?>đ</span>
+                                                    <span class="price-old"><del><?= formatPrice($sp['gia_san_pham']) ?>đ</del></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -402,8 +402,8 @@
                         <!-- blog post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 223013.png" alt="blog image">
+                                <a href="https://vnexpress.net/nen-thay-giay-chay-bo-sau-bao-lau-4868069.html" target="_blank">
+                                    <img src="assets/banner6.jpg" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -411,7 +411,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">PGA LÀ GÌ? NHỮNG ĐIỀU CHƯA AI NÓI VỀ NGHỀ PG</a>
+                                    <a href="https://vnexpress.net/nen-thay-giay-chay-bo-sau-bao-lau-4868069.html" target="_blank">PGA LÀ GÌ? NHỮNG ĐIỀU CHƯA AI NÓI VỀ NGHỀ PG</a>
                                 </h5>
                             </div>
                         </div>
@@ -420,8 +420,8 @@
                         <!-- blog post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 223100.png" alt="blog image">
+                                <a href="https://vnexpress.net/giay-carbon-co-thuc-su-khien-runner-chay-nhanh-hon-4882104.html" target="_blank">
+                                    <img src="assets/banner7.jpg" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -429,7 +429,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">FASHION SHOW LÀ GÌ? TÌM HIỂU VỀ THẾ GIỚI TRÌNH DIỄN THỜI TRANG</a>
+                                    <a href="https://vnexpress.net/giay-carbon-co-thuc-su-khien-runner-chay-nhanh-hon-4882104.html" target="_blank">FASHION SHOW LÀ GÌ? TÌM HIỂU VỀ THẾ GIỚI TRÌNH DIỄN THỜI TRANG</a>
                                 </h5>
                             </div>
                         </div>
@@ -438,8 +438,8 @@
                         <!-- blog post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 222636.png" alt="blog image">
+                                <a href="https://vnexpress.net/cong-nghe-dem-giua-giup-runner-giam-chan-thuong-4953376.html" target="_blank">
+                                    <img src="assets/banner8.jpg" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -447,7 +447,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">TOP MẪU VÁY 2 DÂY DÁNG DÀI ĐẸP VÀ CÁCH PHỐI SÀNH ĐIỆU 2026</a>
+                                    <a href="https://vnexpress.net/cong-nghe-dem-giua-giup-runner-giam-chan-thuong-4953376.html" target="_blank">TOP MẪU VÁY 2 DÂY DÁNG DÀI ĐẸP VÀ CÁCH PHỐI SÀNH ĐIỆU 2026</a>
                                 </h5>
                             </div>
                         </div>
@@ -456,8 +456,8 @@
                         <!-- blog post item start -->
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 222704.png" alt="blog image">
+                                <a href="https://vnexpress.net/puma-ra-mat-dong-giay-da-nang-deviate-nitro-4-va-elite-4-cho-runner-5012109.html target="_blank">
+                                    <img src="assets/banner9.jpg" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -465,28 +465,14 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">DA BÁNH MẬT NÊN MẶC MÀU GÌ ĐẸP, CUỐN HÚT 2026</a>
+                                    <a href="https://vnexpress.net/puma-ra-mat-dong-giay-da-nang-deviate-nitro-4-va-elite-4-cho-runner-5012109.html target="_blank">DA BÁNH MẬT NÊN MẶC MÀU GÌ ĐẸP, CUỐN HÚT 2026</a>
                                 </h5>
                             </div>
                         </div>
                         <!-- blog post item end -->
 
                         <!-- blog post item start -->
-                        <div class="blog-post-item">
-                            <figure class="blog-thumb">
-                                <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 222749.png" alt="blog image">
-                                </a>
-                            </figure>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <p>26/03/2026 | <a href="#">Levano</a></p>
-                                </div>
-                                <h5 class="blog-title">
-                                    <a href="blog-details.html">FREESIZE LÀ GÌ? PHÂN BIỆT VỚI ONE SIZE, BIG SIZE? PHỐI ĐỒ FREESIZE ĐẸP</a>
-                                </h5>
-                            </div>
-                        </div>
+
                         <!-- blog post item end -->
                     </div>
                 </div>
@@ -512,69 +498,11 @@
                 <i class="pe-7s-close"></i>
             </div>
             <div class="minicart-content-box">
-                <div class="minicart-item-wrapper">
-                    <ul>
-                        <li class="minicart-item">
-                            <div class="minicart-thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/img/cart/cart-1.jpg" alt="product">
-                                </a>
-                            </div>
-                            <div class="minicart-content">
-                                <h3 class="product-name">
-                                    <a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-                                </h3>
-                                <p>
-                                    <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                    <span class="cart-price">$100.00</span>
-                                </p>
-                            </div>
-                            <button class="minicart-remove"><i class="pe-7s-close"></i></button>
-                        </li>
-                        <li class="minicart-item">
-                            <div class="minicart-thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/img/cart/cart-2.jpg" alt="product">
-                                </a>
-                            </div>
-                            <div class="minicart-content">
-                                <h3 class="product-name">
-                                    <a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-                                </h3>
-                                <p>
-                                    <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                    <span class="cart-price">$80.00</span>
-                                </p>
-                            </div>
-                            <button class="minicart-remove"><i class="pe-7s-close"></i></button>
-                        </li>
-                    </ul>
-                </div>
 
-                <div class="minicart-pricing-box">
-                    <ul>
-                        <li>
-                            <span>sub-total</span>
-                            <span><strong>$300.00</strong></span>
-                        </li>
-                        <li>
-                            <span>Eco Tax (-2.00)</span>
-                            <span><strong>$10.00</strong></span>
-                        </li>
-                        <li>
-                            <span>VAT (20%)</span>
-                            <span><strong>$60.00</strong></span>
-                        </li>
-                        <li class="total">
-                            <span>total</span>
-                            <span><strong>$370.00</strong></span>
-                        </li>
-                    </ul>
-                </div>
 
                 <div class="minicart-button">
-                    <a href="<?= BASE_URL . '?act=gio-hang' ?>"><i class="fa fa-shopping-cart"></i> View Cart</a>
-                    <a href="<?= BASE_URL . '?act=thanh-toan' ?>"><i class="fa fa-share"></i> Checkout</a>
+                    <a href="<?= BASE_URL . '?act=gio-hang' ?>"><i class="fa fa-shopping-cart"></i>Xem giỏ hàng</a>
+                    <a href="<?= BASE_URL . '?act=thanh-toan' ?>"><i class="fa fa-share"></i>Thanh toán</a>
                 </div>
             </div>
         </div>

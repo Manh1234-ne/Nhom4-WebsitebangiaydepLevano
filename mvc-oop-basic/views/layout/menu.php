@@ -13,7 +13,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="<?= BASE_URL ?>">
-                                <img src="assets/img/levano.png" alt="Brand Logo" width="150px">
+                                <img src="assets/img/levano.jpg" alt="Brand Logo" width="150px">
                             </a>
                         </div>
                     </div>
