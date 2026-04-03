@@ -22,13 +22,11 @@ class SanPham
             $stmt->execute();
 
             return $stmt->fetchAll();
-
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
     }
 
-    
 
     public function getDetailSanPham($id)
     {
@@ -93,6 +91,43 @@ class SanPham
             return $stmt->fetchAll();
         } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
+        }
+    }
+
+    public function getAllDanhMuc()
+    {
+        try {
+            $stmt = $this->conn->prepare('SELECT * FROM danh_mucs');
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function searchSanPham($keyword = '', $danh_muc_id = null)
+    {
+        try {
+            $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc
+                    FROM san_phams
+                    INNER JOIN danh_mucs ON san_phams.danh_muc_id = danh_mucs.id
+                    WHERE 1=1';
+            $params = [];
+
+            if (!empty($keyword)) {
+                $sql .= ' AND san_phams.ten_san_pham LIKE :keyword';
+                $params[':keyword'] = '%' . $keyword . '%';
+            }
+            if (!empty($danh_muc_id)) {
+                $sql .= ' AND san_phams.danh_muc_id = :danh_muc_id';
+                $params[':danh_muc_id'] = $danh_muc_id;
+            }
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
         }
     }
 }

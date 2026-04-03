@@ -28,13 +28,24 @@ match ($act) {
     // auth
     'login' => (new HomeController())->formLogin(),
     'check-login' => (new HomeController())->postLogin(),
+    'logout' => (new HomeController())->logout(),
+    'signup' => (new HomeController())->formSignup(),
+    'post-signup' => (new HomeController())->postSignup(),
+
     'them-gio-hang' => (new HomeController())->addGioHang(),
     'gio-hang' => (new HomeController())->gioHang(),
+    'xoa-gio-hang' => (new HomeController())->xoaGioHang(),
+    'cap-nhat-gio-hang' => (new HomeController())->capNhatGioHang(),
     'thanh-toan' => (new HomeController())->thanhToan(),
     'xu-ly-thanh-toan' => (new HomeController())->postThanhToan(),
     'lich_su_mua_hang' => (new HomeController())->lichSuMuaHang(),
     'chi_tiet_mua_hang' => (new HomeController())->chiTietMuaHang(),
     'huy_don_hang' => (new HomeController())->huyDonHang(),
+
+
+    'products' => (new HomeController())->Products(),
+    'gioi-thieu' => (new HomeController())->gioiThieu(),
+    
     'thong-tin-ca-nhan' => (new HomeController())->thongTinCaNhan(),
     'update-profile' => (new HomeController())->updateProfile(),
     'lien_he' => (new HomeController())->lienHe(),

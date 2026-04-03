@@ -13,7 +13,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="<?= BASE_URL ?>">
-                                <img src="assets/img/levano.png" alt="Brand Logo" width="150px">
+                                <img src="assets/img/levano.jpg" alt="Brand Logo" width="150px">
                             </a>
                         </div>
                     </div>
@@ -30,13 +30,9 @@
 
                                         </li>
 
-                                        <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-
-                                            </ul>
+                                        <li><a href="<?= BASE_URL . '?act=products' ?>">Sản phẩm</a>
                                         </li>
-                                        <li><a href="contact-us.html">Giới thiệu</a></li>
+                                        <li><a href="<?= BASE_URL . '?act=gioi-thieu' ?>">Giới thiệu</a></li>
                                         <li><a href="<?= BASE_URL . '?act=lien_he' ?>">Liên hệ</a></li>
                                     </ul>
                                 </nav>
@@ -51,26 +47,28 @@
                         <div class="header-right d-flex align-items-center justify-content-xl-between justify-content-lg-end">
                             <div class="header-search-container">
                                 <button class="search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
-                                <form class="header-search-box d-lg-none d-xl-block">
-                                    <input type="text" placeholder="Nhập tên sản phẩm" class="header-search-field">
-                                    <button class="header-search-btn"><i class="pe-7s-search"></i></button>
+                                <form class="header-search-box d-lg-none d-xl-block" action="<?= BASE_URL ?>" method="GET">
+                                    <input type="text" name="keyword" placeholder="Nhập tên sản phẩm" class="header-search-field" value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
+                                    <input type="hidden" name="act" value="products">
+                                    <button type="submit" class="header-search-btn"><i class="pe-7s-search"></i></button>
                                 </form>
                             </div>
                             <div class="header-configure-area">
                                 <ul class="nav justify-content-end">
+                                    <li class="user-email"><?= htmlspecialchars($_SESSION['user_client']['ho_ten'] ?? '') ?></li>
                                     <li class="user-hover">
                                         <a href="#">
                                             <i class="pe-7s-user"></i>
                                         </a>
                                         <ul class="dropdown-list">
                                             <?php if (isset($_SESSION['user_client'])) { ?>
-                                               <li><p>Xin chào: <?= $_SESSION['user_client']['email'] ?></p></li> 
+                                                <li><a href="<?= BASE_URL . '?act=lich_su_mua_hang' ?>">Đơn hàng</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                                             <?php } else { ?>
-                                               <li> <a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li> 
+                                                <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=signup' ?>">Đăng kí</a></li>
                                             <?php } ?>
-                                            <li><a href="login-register.html">Đăng kí</a></li>
-                                            <li><a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>">tài khoản</a></li>
-                                            <li><a href="<?= BASE_URL . '?act=lich_su_mua_hang' ?>">Đơn hàng</a></li>
                                         </ul>
                                     </li>
                                     <li>
