@@ -49,9 +49,9 @@
                                         <tr>
                                             <td><img class="img-fluid" src="<?= BASE_URL . $item['hinh_anh'] ?>" alt="Product" width="100px" /></td>
                                             <td><?= $item['ten_san_pham'] ?></td>
-                                            <td><?= number_format($item['don_gia'], 0, ',', ',') ?>đ</td>
+                                            <td><?= number_format($item['don_gia'], 0, ',', ',') ?> đ</td>
                                             <td><?= $item['so_luong'] ?></td>
-                                            <td><?= number_format($item['thanh_tien'], 0, ',', ',') ?></td>
+                                            <td><?= number_format($item['thanh_tien'], 0, ',', ',') ?> đ</td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -98,8 +98,12 @@
                                         <td><?= $donHang['ghi_chu'] ?></td>
                                     </tr>
                                     <tr>
+                                        <th>Phí vận chuyển</th>
+                                        <td>30,000 đ</td>
+                                    </tr>
+                                    <tr>
                                         <th>Tổng tiền</th>
-                                        <td><?= number_format($donHang['tong_tien'], 0, ',', ',') ?></td>
+                                        <td><?= number_format($donHang['tong_tien'], 0, ',', ',') ?> đ</td>
                                     </tr>
                                     <tr>
                                         <th>Phương thức thanh toán</th>

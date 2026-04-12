@@ -50,4 +50,6 @@ match ($act) {
     'update-profile' => (new HomeController())->updateProfile(),
     'lien_he' => (new HomeController())->lienHe(),
     'dashboard' => (new HomeController())->dashboard(),
+
+    'post-binh-luan' => (new HomeController())->postBinhLuan(),
 };

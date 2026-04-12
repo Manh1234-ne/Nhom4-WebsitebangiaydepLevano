@@ -321,11 +321,18 @@ class HomeController
                         $item['so_luong'],
                         $donGia * $item['so_luong']
                     );
+                    // 👉 TRỪ SỐ LƯỢNG KHO
+                    $this->modelSanPham->giamSoLuong(
+                        $item['san_pham_id'],
+                        $item['so_luong']
+                    );
                 }
 
+
+
                 // **Không xóa giỏ hàng** - giữ nguyên để tham khảo
-                // $this->modelGioHang->clearDetailGioHang($gioHang['id']);
-                // $this->modelGioHang->clearGioHang($tai_khoan_id);
+                $this->modelGioHang->clearDetailGioHang($gioHang['id']);
+                $this->modelGioHang->clearGioHang($tai_khoan_id);
 
                 // Chuyển hướng về lịch sử mua hàng
                 header("Location: " . BASE_URL . '?act=lich_su_mua_hang');
@@ -335,6 +342,7 @@ class HomeController
             }
         }
     }
+
 
 
 
@@ -416,6 +424,16 @@ class HomeController
             if ($donHang['trang_thai_id'] != 1) {
                 echo "Chỉ đơn hàng ở trạng thái 'Chưa xác nhận' mới có thể hủy";
                 exit;
+            }
+            // 🔥 LẤY CHI TIẾT ĐƠN HÀNG
+            $chiTietDonHang = $this->modelDonHang->getChiTietDonHangByDonHangId($donHangId);
+
+            // 🔥 CỘNG LẠI KHO
+            foreach ($chiTietDonHang as $item) {
+                $this->modelSanPham->tangSoLuong(
+                    $item['san_pham_id'],
+                    $item['so_luong']
+                );
             }
 
             $this->modelDonHang->updateTrangThaiDonHang($donHangId, 11);
@@ -540,4 +558,41 @@ class HomeController
         $_SESSION['success'] = "Cập nhật thành công";
         header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
     }
+
+
+    public function postBinhLuan()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            if (!isset($_SESSION['user_client'])) {
+
+                $_SESSION['error'] = ['Bạn cần đăng nhập để bình luận'];
+
+                header("Location: " . BASE_URL . '?act=login');
+                exit();
+            }
+
+            $san_pham_id = $_POST['san_pham_id'];
+            $noi_dung = trim($_POST['noi_dung']);
+
+            if (empty($noi_dung)) {
+
+                $_SESSION['error'] = ['Nội dung bình luận không được để trống'];
+
+                header("Location: " . BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $san_pham_id);
+                exit();
+            }
+
+            $tai_khoan_id = $_SESSION['user_client']['id'];
+
+            $this->modelSanPham->addBinhLuan(
+                $san_pham_id,
+                $tai_khoan_id,
+                $noi_dung
+            );
+
+            header("Location: " . BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $san_pham_id);
+            exit();
+        }
     }
+}
