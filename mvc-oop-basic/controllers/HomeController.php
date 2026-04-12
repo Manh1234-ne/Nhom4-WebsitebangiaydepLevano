@@ -566,7 +566,6 @@ class HomeController
 
             if (!isset($_SESSION['user_client'])) {
 
-                $_SESSION['error'] = ['Bạn cần đăng nhập để bình luận'];
 
                 header("Location: " . BASE_URL . '?act=login');
                 exit();

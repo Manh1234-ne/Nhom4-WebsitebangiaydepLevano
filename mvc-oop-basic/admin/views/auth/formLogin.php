@@ -144,7 +144,7 @@
                 <a href="./assets/index2.html" class="h1">BÁN GIÀY DÉP</a>
             </div>
             <div class="card-body">
-                
+
                 <?php if (!empty($_SESSION['error'])): ?>
 
                     <?php if (is_array($_SESSION['error'])): ?>
@@ -154,6 +154,9 @@
                     <?php else: ?>
                         <p class="text-danger login-box-msg"><?= $_SESSION['error'] ?></p>
                     <?php endif; ?>
+
+                    <?php unset($_SESSION['error']); // 🔥 QUAN TRỌNG 
+                    ?>
 
                 <?php else: ?>
                     <p class="login-box-msg">Vui lòng đăng nhập</p>
