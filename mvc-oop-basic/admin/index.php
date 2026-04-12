@@ -9,6 +9,7 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminSanPhamController.php';
 require_once './controllers/AdminDonHangController.php';
+require_once './controllers/AdminBaoCaoThongkeController.php';
 require_once './controllers/AdminTaiKhoanController.php';
 
 
@@ -22,7 +23,11 @@ require_once './models/AdminTaiKhoan.php';
 
 
 // Route
-$act = $_GET['act'] ?? '/';
+$act = $_GET['act'] ?? 'list-tai-khoan-quan-tri';
+
+if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+    checkLoginAdmin();
+}
 
 
 if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
@@ -32,7 +37,7 @@ if ($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-a
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
 match ($act) {
-    '/' => (new AdminSanPhamController())->danhSachSanPham(),
+    '/' => (new AdminBaoCaoThongkeController())->home(),
     // Route
 
     'danh-muc' => (new AdminDanhMucController())->danhSachDanhMuc(),
@@ -70,6 +75,9 @@ match ($act) {
     'them-quan-tri' => (new AdminTaiKhoanController())->postAddQuanTri(),
     'form-sua-quan-tri' => (new AdminTaiKhoanController())->formEditQuanTri(),
     'sua-quan-tri' => (new AdminTaiKhoanController())->postEditQuanTri(),
+
+    //route bình luận
+    'update-trang-thai-binh-luan' => (new AdminSanPhamController())->updateTrangThaiBinhLuan(),
 
     // route reset password tài khoản
     'reset-password' => (new AdminTaiKhoanController())->resetPassword(),

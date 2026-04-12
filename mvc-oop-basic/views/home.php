@@ -8,7 +8,7 @@
         <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/slider1.png">
+                <div class="hero-slider-item bg-img" data-bg="assets/banner3.png">
                     <div class="container">
                         <div class="row">
 
@@ -19,7 +19,7 @@
             <!-- single slider item start -->
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/slider2.png">
+                <div class="hero-slider-item bg-img" data-bg="assets/banner2.png">
                     <div class="container">
                         <div class="row">
 
@@ -30,7 +30,7 @@
             <!-- single slider item start -->
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="assets/slider3.png">
+                <div class="hero-slider-item bg-img" data-bg="assets/banner5.png">
                     <div class="container">
                         <div class="row">
 
@@ -191,14 +191,14 @@
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
                         <a href="#">
-                            <img src="assets/banner1.png" alt="product banner">
+                            <img src="assets/banner4.jpg" alt="product banner">
                         </a>
                     </figure>
                 </div>
                 <div class="col-sm-6">
                     <figure class="banner-statistics mt-20">
                         <a href="#">
-                            <img src="assets/banner2.png" alt="product banner">
+                            <img src="assets/banner5.png" alt="product banner">
                         </a>
 
                     </figure>
@@ -293,7 +293,7 @@
                     <div class="group-product-banner">
                         <figure class="banner-statistics">
                             <a href="#">
-                                <img src="assets/Screenshot 2026-03-26 225005.png" alt="product banner">
+                                <img src="assets/slider5.jpg" alt="product banner">
                             </a>
                         </figure>
                     </div>
@@ -431,7 +431,7 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 223013.png" alt="blog image">
+                                    <img src="assets/tin1.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -439,7 +439,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">PGA LÀ GÌ? NHỮNG ĐIỀU CHƯA AI NÓI VỀ NGHỀ PG</a>
+                                    <a href="blog-details.html">Giày Cole Haan có tốt không? Những lý do khiến phái mạnh mê mẩn</a>
                                 </h5>
                             </div>
                         </div>
@@ -449,7 +449,7 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 223100.png" alt="blog image">
+                                    <img src="assets/tin2.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -457,7 +457,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">FASHION SHOW LÀ GÌ? TÌM HIỂU VỀ THẾ GIỚI TRÌNH DIỄN THỜI TRANG</a>
+                                    <a href="blog-details.html">Chơi Pickleball đi giày gì? Tiêu chí chọn giày nhất định phải biết</a>
                                 </h5>
                             </div>
                         </div>
@@ -467,7 +467,7 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 222636.png" alt="blog image">
+                                    <img src="assets/tin3.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -475,7 +475,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">TOP MẪU VÁY 2 DÂY DÁNG DÀI ĐẸP VÀ CÁCH PHỐI SÀNH ĐIỆU 2026</a>
+                                    <a href="blog-details.html">Giày On Running của nước nào? Liệu có tốt như lời đồn</a>
                                 </h5>
                             </div>
                         </div>
@@ -485,7 +485,7 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 222704.png" alt="blog image">
+                                    <img src="assets/tin4.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -493,7 +493,7 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">DA BÁNH MẬT NÊN MẶC MÀU GÌ ĐẸP, CUỐN HÚT 2026</a>
+                                    <a href="blog-details.html">Giày tennis Babolat có tốt không? Những điều cần biết trước khi mua</a>
                                 </h5>
                             </div>
                         </div>
@@ -503,7 +503,7 @@
                         <div class="blog-post-item">
                             <figure class="blog-thumb">
                                 <a href="blog-details.html">
-                                    <img src="assets/Screenshot 2026-03-26 222749.png" alt="blog image">
+                                    <img src="assets/tin5.png" alt="blog image">
                                 </a>
                             </figure>
                             <div class="blog-content">
@@ -511,7 +511,8 @@
                                     <p>26/03/2026 | <a href="#">Levano</a></p>
                                 </div>
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">FREESIZE LÀ GÌ? PHÂN BIỆT VỚI ONE SIZE, BIG SIZE? PHỐI ĐỒ FREESIZE ĐẸP</a>
+                                    <a href="blog-details.html">Bảng size giày Babolat và bí quyết chọn size theo từng dòng giày
+                                    </a>
                                 </h5>
                             </div>
                         </div>
@@ -532,82 +533,120 @@
 
 
 <!-- offcanvas mini cart start -->
+
 <div class="offcanvas-minicart-wrapper">
     <div class="minicart-inner">
         <div class="offcanvas-overlay"></div>
+
         <div class="minicart-inner-content">
+
             <div class="minicart-close">
                 <i class="pe-7s-close"></i>
             </div>
+
             <div class="minicart-content-box">
+
+                <?php
+                $tongTien = 0;
+                ?>
+
                 <div class="minicart-item-wrapper">
                     <ul>
-                        <li class="minicart-item">
-                            <div class="minicart-thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/img/cart/cart-1.jpg" alt="product">
-                                </a>
-                            </div>
-                            <div class="minicart-content">
-                                <h3 class="product-name">
-                                    <a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-                                </h3>
-                                <p>
-                                    <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                    <span class="cart-price">$100.00</span>
-                                </p>
-                            </div>
-                            <button class="minicart-remove"><i class="pe-7s-close"></i></button>
-                        </li>
-                        <li class="minicart-item">
-                            <div class="minicart-thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/img/cart/cart-2.jpg" alt="product">
-                                </a>
-                            </div>
-                            <div class="minicart-content">
-                                <h3 class="product-name">
-                                    <a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-                                </h3>
-                                <p>
-                                    <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                    <span class="cart-price">$80.00</span>
-                                </p>
-                            </div>
-                            <button class="minicart-remove"><i class="pe-7s-close"></i></button>
-                        </li>
+
+                        <?php if (!empty($chiTietGioHang)): ?>
+
+                            <?php foreach ($chiTietGioHang as $item): ?>
+
+                                <?php
+                                $gia = $item['gia_khuyen_mai'] ? $item['gia_khuyen_mai'] : $item['gia_san_pham'];
+                                $tongTien += $gia * $item['so_luong'];
+                                ?>
+
+                                <li class="minicart-item">
+
+                                    <div class="minicart-thumb">
+                                        <a href="<?= BASE_URL ?>?act=chi-tiet-san-pham&id_san_pham=<?= $item['san_pham_id'] ?>">
+                                            <img src="<?= BASE_URL . $item['hinh_anh'] ?>" alt="<?= $item['ten_san_pham'] ?>">
+                                        </a>
+                                    </div>
+
+                                    <div class="minicart-content">
+
+                                        <h3 class="product-name">
+                                            <a href="<?= BASE_URL ?>?act=chi-tiet-san-pham&id_san_pham=<?= $item['san_pham_id'] ?>">
+                                                <?= $item['ten_san_pham'] ?>
+                                            </a>
+                                        </h3>
+
+                                        <p>
+                                            <span class="cart-quantity">
+                                                <?= $item['so_luong'] ?> <strong>&times;</strong>
+                                            </span>
+
+                                            <span class="cart-price">
+                                                <?= number_format($gia) ?> đ
+                                            </span>
+                                        </p>
+
+                                    </div>
+
+                                    <a href="<?= BASE_URL ?>?act=xoa-gio-hang&id_san_pham=<?= $item['san_pham_id'] ?>">
+                                        <button class="minicart-remove">
+                                            <a href="<?= BASE_URL . '?act=xoa-gio-hang&id_san_pham=' . $item['san_pham_id'] ?>">
+                                                <i class="pe-7s-close"></i>
+                                            </a>
+                                        </button>
+                                    </a>
+
+                                </li>
+
+                            <?php endforeach ?>
+
+                        <?php else: ?>
+
+                            <li style="padding:20px;text-align:center;">
+                                Giỏ hàng trống
+                            </li>
+
+                        <?php endif ?>
+
                     </ul>
                 </div>
+
 
                 <div class="minicart-pricing-box">
                     <ul>
+
                         <li>
-                            <span>sub-total</span>
-                            <span><strong>$300.00</strong></span>
+                            <span>Sub-total</span>
+                            <span><strong><?= number_format($tongTien) ?> đ</strong></span>
                         </li>
-                        <li>
-                            <span>Eco Tax (-2.00)</span>
-                            <span><strong>$10.00</strong></span>
-                        </li>
-                        <li>
-                            <span>VAT (20%)</span>
-                            <span><strong>$60.00</strong></span>
-                        </li>
+
                         <li class="total">
-                            <span>total</span>
-                            <span><strong>$370.00</strong></span>
+                            <span>Total</span>
+                            <span><strong><?= number_format($tongTien) ?> đ</strong></span>
                         </li>
+
                     </ul>
                 </div>
 
+
                 <div class="minicart-button">
-                    <a href="<?= BASE_URL . '?act=gio-hang' ?>"><i class="fa fa-shopping-cart"></i> View Cart</a>
-                    <a href="<?= BASE_URL . '?act=thanh-toan' ?>"><i class="fa fa-share"></i> Checkout</a>
+                    <a href="<?= BASE_URL . '?act=gio-hang' ?>">
+                        <i class="fa fa-shopping-cart"></i> View Cart
+                    </a>
+
+                    <a href="<?= BASE_URL . '?act=thanh-toan' ?>">
+                        <i class="fa fa-share"></i> Checkout
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+
+
 <!-- offcanvas mini cart end -->
 
 <?php require_once 'layout/footer.php'; ?>

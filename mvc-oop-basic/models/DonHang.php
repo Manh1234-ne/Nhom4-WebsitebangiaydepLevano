@@ -3,12 +3,12 @@
 class DonHang
 {
     public $conn;
-    public function __construct()
+    public function __construct($conn = null)
     {
-        $this->conn = connectDB();
+        $this->conn = $conn ?: connectDB();
     }
 
-    public function addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $trang_thai_id)
+    public function addDonHang($tai_khoan_id, $ten_nguoi_nhan, $email_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $tong_tien, $phuong_thuc_thanh_toan_id, $ngay_dat, $trang_thai_id, $ma_don_hang)
     {
         try {
             $sql = "INSERT INTO don_hangs (tai_khoan_id, ten_nguoi_nhan, email_nguoi_nhan, sdt_nguoi_nhan, dia_chi_nguoi_nhan, ghi_chu, tong_tien, phuong_thuc_thanh_toan_id, ngay_dat, trang_thai_id, ma_don_hang) VALUES (:tai_khoan_id, :ten_nguoi_nhan, :email_nguoi_nhan, :sdt_nguoi_nhan, :dia_chi_nguoi_nhan, :ghi_chu, :tong_tien, :phuong_thuc_thanh_toan_id, :ngay_dat, :trang_thai_id, :ma_don_hang)";
@@ -24,7 +24,7 @@ class DonHang
                 ':phuong_thuc_thanh_toan_id' => $phuong_thuc_thanh_toan_id,
                 ':ngay_dat' => $ngay_dat,
                 ':trang_thai_id' => $trang_thai_id,
-                ':ma_don_hang' => 'DH' . rand(1000, 9999),
+                ':ma_don_hang' => $ma_don_hang,
             ]);
             return $this->conn->lastInsertId();
         } catch (Exception $e) {
@@ -127,7 +127,7 @@ class DonHang
             $stmt->execute([
                 ':trang_thai_id' => $trangthaiID,
                 ':id' => $donHangId
-                ]);
+            ]);
             return true;
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();

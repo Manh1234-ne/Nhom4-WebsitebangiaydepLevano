@@ -7,7 +7,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?= BASE_URL ?>" class="nav-link">Website</a>
       </li>
-      
+
     </ul>
 
     <!-- Right navbar links -->

@@ -13,26 +13,25 @@
                     <div class="widget-item">
                         <div class="widget-title">
                             <div class="widget-logo">
-                                <a href="<?= BASE_URL ?>">
-                                    <img src="assets/img/levano.jpg" alt="brand logo" width="150px">
+                                <a href="index.html">
+                                    <img src="assets/levano.jpg" width="170px" alt="brand logo">
                                 </a>
                             </div>
                         </div>
                         <div class="widget-body">
-                            <p>Levano là cửa hàng chuyên cung cấp các sản phẩm giày thời trang chất lượng cao,
-                                mang đến phong cách hiện đại, trẻ trung và thoải mái cho khách hàng.</p>
+                            <!-- <p>We are a team of designers and developers that create high quality wordpress, shopify, Opencart </p> -->
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="widget-item">
-                        <h6 class="widget-title">Liên hệ</h6>
+                        <h6 class="widget-title">Liên hệ với chúng tôi</h6>
                         <div class="widget-body">
                             <address class="contact-block">
                                 <ul>
-                                    <li><i class="pe-7s-home"></i> Trịnh Văn Bô, Nam Từ Liêm, Hà Nội</li>
-                                    <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">levano@gmail.com </a></li>
-                                    <li><i class="pe-7s-call"></i> <a href="tel:(012)800456789987">0988 888 888</a></li>
+                                    <li><i class="pe-7s-home"></i>13 Trịnh Văn Bô</li>
+                                    <li><i class="pe-7s-mail"></i> <a href="mailto:demo@plazathemes.com">manhnon16@gmail.com</a></li>
+                                    <li><i class="pe-7s-call"></i> <a href="tel:0966513945">0966513945</a></li>
                                 </ul>
                             </address>
                         </div>
@@ -43,12 +42,10 @@
                         <h6 class="widget-title">Thông tin</h6>
                         <div class="widget-body">
                             <ul class="info-list">
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Giao hàng</a></li>
-                                <li><a href="#">Bảo mật</a></li>
-                                <li><a href="#">Điều khoản sử dụng</a></li>
+                                <li><a href="#">Thông tin giao hàng</a> </li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="#">Điều khoản & Điều kiện</a></li>
                                 <li><a href="#">Liên hệ</a></li>
-                                <li><a href="#">Hệ thống cửa hàng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,10 +54,8 @@
                     <div class="widget-item">
                         <h6 class="widget-title">Theo dõi chúng tôi</h6>
                         <div class="widget-body social-link">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-youtube"></i></a>
+                            <a href="https://www.facebook.com/biicutiidzs1tg?mibextid=wwXIfr&rdid=yjin19cYtJlJgjG5&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CYLeqTvBm%2F%3Fmibextid%3DwwXIfr"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/biicutii06/profilecard/?igsh=NzJ4bHdiczJpcmo2"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -68,9 +63,9 @@
             <div class="row align-items-center mt-20">
                 <div class="col-md-6">
                     <div class="newsletter-wrapper">
-                        <h6 class="widget-title-text">Đăng ký nhận tin khuyến mãi</h6>
+                        <h6 class="widget-title-text">Đăng ký để nhận thông tin mới nhất</h6>
                         <form class="newsletter-inner" id="mc-form">
-                            <input type="email" class="news-field" id="mc-email" autocomplete="off" placeholder="Enter your email address">
+                            <input type="email" class="news-field" id="mc-email" autocomplete="off" placeholder="Nhập email của bạn">
                             <button class="news-btn" id="mc-submit">Đăng ký</button>
                         </form>
                         <!-- mail-chimp-alerts Start -->
@@ -95,7 +90,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright-text text-center">
-                        <p>&copy; 2026 <b>Levano</b> Nhom4 </p>
+                        <p>&copy; 2025 <b>Bella Belle</b> Made with <a href="#"><b>nhóm 4</b></a></p>
                     </div>
                 </div>
             </div>
@@ -103,6 +98,7 @@
     </div>
 </footer>
 <!-- footer area end -->
+
 <!-- JS
 ============================================ -->
 

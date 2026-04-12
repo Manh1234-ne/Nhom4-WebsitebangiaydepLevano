@@ -8,6 +8,7 @@ class AdminDonHangController
     }
     public function danhSachDonHang()
     {
+        // Lấy dữ liệu từ Model,Gửi sang View hiển thị
         $listDonHang = $this->modelDonHang->getAllDonHang();
         require_once './views/donhang/listDonHang.php';
     }

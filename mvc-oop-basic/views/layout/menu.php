@@ -13,7 +13,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="<?= BASE_URL ?>">
-                                <img src="assets/img/levano.png" alt="Brand Logo" width="150px">
+                                <img src="assets/levano.jpg" alt="Brand Logo" width="110px">
                             </a>
                         </div>
                     </div>
@@ -30,14 +30,10 @@
 
                                         </li>
 
-                                        <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-
-                                            </ul>
+                                        <li><a href="<?= BASE_URL . '?act=products' ?>">Sản phẩm</a>
                                         </li>
-                                        <li><a href="contact-us.html">Giới thiệu</a></li>
-                                        <li><a href="contact-us.html">Liên hệ</a></li>
+                                        <li><a href="<?= BASE_URL . '?act=gioi-thieu' ?>">Giới thiệu</a></li>
+                                        <li><a href="<?= BASE_URL . '?act=lien_he' ?>">Liên hệ</a></li>
                                     </ul>
                                 </nav>
                                 <!-- main menu navbar end -->
@@ -66,7 +62,7 @@
                                         <ul class="dropdown-list">
                                             <?php if (isset($_SESSION['user_client'])) { ?>
                                                 <li><a href="<?= BASE_URL . '?act=lich_su_mua_hang' ?>">Đơn hàng</a></li>
-                                                <li><a href="#">Tài khoản</a></li>
+                                                <li><a href="<?= BASE_URL . '?act=thong-tin-ca-nhan' ?>">Tài khoản</a></li>
                                                 <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                                             <?php } else { ?>
                                                 <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>

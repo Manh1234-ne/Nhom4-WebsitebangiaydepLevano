@@ -43,18 +43,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($donHangs as $donHang): ?>
+                                    <?php foreach ($donHangs as $donHang): ?>
                                         <tr>
                                             <th class="text-center"><?= $donHang['ma_don_hang'] ?></th>
                                             <td><?= $donHang['ngay_dat'] ?></td>
-                                            <td><?= formatPrice( $donHang['tong_tien']) ?>đ</td>
+                                            <td><?= formatPrice($donHang['tong_tien']) ?>đ</td>
                                             <td><?= $phuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']] ?></td>
                                             <td><?= $trangThaiDonHang[$donHang['trang_thai_id']] ?></td>
                                             <td>
                                                 <a href="<?= BASE_URL ?>?act=chi_tiet_mua_hang&id=<?= $donHang['id'] ?>" class="btn btn-sqr">Chi tiết đơn hàng</a>
-                                                <?php if($donHang['trang_thai_id'] == 1): ?>
+                                                <?php if ($donHang['trang_thai_id'] == 1): ?>
                                                     <a href="<?= BASE_URL ?>?act=huy_don_hang&id=<?= $donHang['id'] ?>" class="btn btn-sqr"
-                                                    onclick="return confirm('Xác nhận hủy đơn hàng')">
+                                                        onclick="return confirm('Xác nhận hủy đơn hàng')">
                                                         Hủy
                                                     </a>
                                                 <?php endif; ?>
@@ -64,10 +64,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        
+
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

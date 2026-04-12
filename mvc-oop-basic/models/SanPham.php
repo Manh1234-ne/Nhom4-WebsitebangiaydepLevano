@@ -4,9 +4,9 @@ class SanPham
 {
     public $conn;
 
-    public function __construct()
+    public function __construct($conn = null)
     {
-        $this->conn = connectDB();
+        $this->conn = $conn ?: connectDB();
     }
 
     // Lấy danh sách sản phẩm kèm danh mục
@@ -61,22 +61,36 @@ class SanPham
             echo "lỗi" . $e->getMessage();
         }
     }
+    public function addBinhLuan($san_pham_id, $tai_khoan_id, $noi_dung)
+    {
+        $sql = "INSERT INTO binh_luans
+            (san_pham_id,tai_khoan_id,noi_dung,ngay_dang)
+            VALUES (?,?,?,NOW())";
+
+        $stmt = $this->conn->prepare($sql);
+
+        return $stmt->execute([
+            $san_pham_id,
+            $tai_khoan_id,
+            $noi_dung
+        ]);
+    }
+
+
+    // lấy bình luận theo sản phẩm
     public function getBinhLuanFromSanPham($id)
     {
-        try {
-            $sql = 'SELECT binh_luans.*, tai_khoans.ho_ten, tai_khoans.anh_dai_dien
-            FROM binh_luans
-            INNER JOIN tai_khoans ON binh_luans.tai_khoan_id = tai_khoans.id
-            WHERE binh_luans.san_pham_id = :id
-            ';
-            $stmt = $this->conn->prepare($sql);
+        $sql = "SELECT bl.*, tk.ho_ten, tk.anh_dai_dien
+            FROM binh_luans bl
+            JOIN tai_khoans tk
+            ON bl.tai_khoan_id = tk.id
+            WHERE bl.san_pham_id = ?
+            ORDER BY bl.id DESC";
 
-            $stmt->execute([':id' => $id]);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
 
-            return $stmt->fetchAll();
-        } catch (Exception $e) {
-            echo "lỗi" . $e->getMessage();
-        }
+        return $stmt->fetchAll();
     }
     public function getListSanPhamDanhMuc($danh_muc_id)
     {
@@ -92,6 +106,34 @@ class SanPham
             return $stmt->fetchAll();
         } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
+        }
+    }
+
+    public function getStock($id)
+    {
+        try {
+            $sql = 'SELECT so_luong FROM san_phams WHERE id = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            return (int)$stmt->fetchColumn();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return 0;
+        }
+    }
+
+    public function changeStock($id, $delta)
+    {
+        try {
+            $sql = 'UPDATE san_phams SET so_luong = so_luong + :delta WHERE id = :id';
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute([
+                ':delta' => $delta,
+                ':id' => $id,
+            ]);
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return false;
         }
     }
 }
