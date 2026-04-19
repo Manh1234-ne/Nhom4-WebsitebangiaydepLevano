@@ -60,7 +60,7 @@
           <!-- SẢN PHẨM -->
           <div class="card">
             <div class="card-header border-0">
-              <h3 class="card-title">Sản phẩm</h3>
+              <h3 class="card-title">Top 3 sản phẩm có tổng doanh thu cao nhất</h3>
 
               <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm">
@@ -80,6 +80,7 @@
                     <th>Sản phẩm</th>
                     <th>Giá</th>
                     <th>Tồn kho</th>
+                    <th>Doanh thu</th>
                     <th>Chi tiết</th>
                   </tr>
                 </thead>
@@ -104,6 +105,10 @@
                       </td>
 
                       <td>
+                        <?= number_format((float)($sanPham['tong_doanh_thu_sp'] ?? 0)) ?>đ
+                      </td>
+
+                      <td>
                         <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . (int)$sanPham['id'] ?>" class="text-muted">
                           <i class="fas fa-search"></i>
                         </a>
@@ -114,7 +119,7 @@
 
                   <?php if (empty($topSanPham)) : ?>
                     <tr>
-                      <td colspan="4" class="text-center">
+                      <td colspan="5" class="text-center">
                         Chưa có dữ liệu sản phẩm
                       </td>
                     </tr>
@@ -219,7 +224,7 @@
                   </span>
 
                   <span class="text-muted">
-                    TỈ LỆ CHUYỂN ĐỔI
+                    TỈ LỆ MUA HÀNG
                   </span>
 
                 </p>
@@ -338,21 +343,21 @@
 
         data: {
 
-          labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
+          labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
 
           datasets: [
 
             {
               label: 'Năm nay',
               borderColor: '#007bff',
-              data: [12, 19, 14, 17, 22, 25],
+              data: <?= json_encode(array_values($doanhThuNamNay ?? array_fill(0, 12, 0))) ?>,
               fill: false
             },
 
             {
               label: 'Năm trước',
               borderColor: '#6c757d',
-              data: [10, 13, 11, 15, 18, 20],
+              data: <?= json_encode(array_values($doanhThuNamTruoc ?? array_fill(0, 12, 0))) ?>,
               fill: false
             }
 

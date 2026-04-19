@@ -146,6 +146,34 @@
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <h6 class="mt-4 mb-3">Bình luận của tôi</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Nội dung</th>
+                                                    <th>Ngày đăng</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if (empty($binhLuans)) : ?>
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">Bạn chưa có bình luận nào.</td>
+                                                    </tr>
+                                                <?php else : ?>
+                                                    <?php foreach ($binhLuans as $bl) : ?>
+                                                        <tr>
+                                                            <td><?= htmlspecialchars($bl['ten_san_pham']) ?></td>
+                                                            <td><?= htmlspecialchars($bl['noi_dung']) ?></td>
+                                                            <td><?= htmlspecialchars($bl['ngay_dang']) ?></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             

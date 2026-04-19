@@ -9,60 +9,56 @@
             <div class="minicart-content-box">
                 <div class="minicart-item-wrapper">
                     <ul>
-                        <li class="minicart-item">
-                            <div class="minicart-thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/img/cart/cart-1.jpg" alt="product">
-                                </a>
-                            </div>
-                            <div class="minicart-content">
-                                <h3 class="product-name">
-                                    <a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-                                </h3>
-                                <p>
-                                    <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                    <span class="cart-price">$100.00</span>
-                                </p>
-                            </div>
-                            <button class="minicart-remove"><i class="pe-7s-close"></i></button>
-                        </li>
-                        <li class="minicart-item">
-                            <div class="minicart-thumb">
-                                <a href="product-details.html">
-                                    <img src="assets/img/cart/cart-2.jpg" alt="product">
-                                </a>
-                            </div>
-                            <div class="minicart-content">
-                                <h3 class="product-name">
-                                    <a href="product-details.html">Dozen White Botanical Linen Dinner Napkins</a>
-                                </h3>
-                                <p>
-                                    <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                    <span class="cart-price">$80.00</span>
-                                </p>
-                            </div>
-                            <button class="minicart-remove"><i class="pe-7s-close"></i></button>
-                        </li>
+                        <?php
+                        $tongTien = 0;
+
+                        if (!empty($chiTietGioHang)):
+                            foreach ($chiTietGioHang as $sanPham):
+                                $gia = $sanPham['gia_khuyen_mai'] ?: $sanPham['gia_san_pham'];
+                                $tong = $gia * $sanPham['so_luong'];
+                                $tongTien += $tong;
+                        ?>
+                                <li class="minicart-item">
+                                    <div class="minicart-thumb">
+                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['san_pham_id']; ?>">
+                                            <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="minicart-content">
+                                        <h3 class="product-name">
+                                            <a href="#">
+                                                <?= htmlspecialchars($sanPham['ten_san_pham']) ?>
+                                            </a>
+                                        </h3>
+                                        <p>
+                                            <span class="cart-quantity">
+                                                <?= $sanPham['so_luong'] ?> <strong>&times;</strong>
+                                            </span>
+                                            <span class="cart-price"><?= formatPrice($gia) ?>đ</span>
+                                        </p>
+                                    </div>
+
+                                    <button class="minicart-remove">
+                                        <a href="<?= BASE_URL ?>?act=xoa-gio-hang&id_san_pham=<?= $sanPham['san_pham_id'] ?>">
+                                            <i class="pe-7s-close"></i>
+                                        </a>
+                                    </button>
+                                </li>
+                            <?php
+                            endforeach;
+                        else:
+                            ?>
+                            <li>Giỏ hàng trống</li>
+                        <?php endif; ?>
                     </ul>
                 </div>
 
                 <div class="minicart-pricing-box">
                     <ul>
-                        <li>
-                            <span>sub-total</span>
-                            <span><strong>$300.00</strong></span>
-                        </li>
-                        <li>
-                            <span>Eco Tax (-2.00)</span>
-                            <span><strong>$10.00</strong></span>
-                        </li>
-                        <li>
-                            <span>VAT (20%)</span>
-                            <span><strong>$60.00</strong></span>
-                        </li>
                         <li class="total">
-                            <span>total</span>
-                            <span><strong>$370.00</strong></span>
+                            <span>Tổng tiền</span>
+                            <span><strong><?= formatPrice($tongTien) ?>đ</strong></span>
                         </li>
                     </ul>
                 </div>

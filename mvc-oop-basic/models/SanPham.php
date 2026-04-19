@@ -60,22 +60,36 @@ class SanPham
             echo "lỗi" . $e->getMessage();
         }
     }
+    public function addBinhLuan($san_pham_id, $tai_khoan_id, $noi_dung)
+    {
+        $sql = "INSERT INTO binh_luans
+            (san_pham_id,tai_khoan_id,noi_dung,ngay_dang)
+            VALUES (?,?,?,NOW())";
+
+        $stmt = $this->conn->prepare($sql);
+
+        return $stmt->execute([
+            $san_pham_id,
+            $tai_khoan_id,
+            $noi_dung
+        ]);
+    }
+
+
+    // lấy bình luận theo sản phẩm
     public function getBinhLuanFromSanPham($id)
     {
-        try {
-            $sql = 'SELECT binh_luans.*, tai_khoans.ho_ten, tai_khoans.anh_dai_dien
-            FROM binh_luans
-            INNER JOIN tai_khoans ON binh_luans.tai_khoan_id = tai_khoans.id
-            WHERE binh_luans.san_pham_id = :id
-            ';
-            $stmt = $this->conn->prepare($sql);
+        $sql = "SELECT bl.*, tk.ho_ten, tk.anh_dai_dien
+            FROM binh_luans bl
+            JOIN tai_khoans tk
+            ON bl.tai_khoan_id = tk.id
+            WHERE bl.san_pham_id = ?
+            ORDER BY bl.id DESC";
 
-            $stmt->execute([':id' => $id]);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
 
-            return $stmt->fetchAll();
-        } catch (Exception $e) {
-            echo "lỗi" . $e->getMessage();
-        }
+        return $stmt->fetchAll();
     }
     public function getListSanPhamDanhMuc($danh_muc_id)
     {
@@ -99,6 +113,22 @@ class SanPham
         try {
             $stmt = $this->conn->prepare('SELECT * FROM danh_mucs');
             $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+    public function getBinhLuanFromUser($tai_khoan_id)
+    {
+        try {
+            $sql = 'SELECT binh_luans.*, san_phams.ten_san_pham
+                    FROM binh_luans
+                    INNER JOIN san_phams ON binh_luans.san_pham_id = san_phams.id
+                    WHERE binh_luans.tai_khoan_id = :tai_khoan_id
+                    ORDER BY binh_luans.ngay_dang DESC';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':tai_khoan_id' => $tai_khoan_id]);
             return $stmt->fetchAll();
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
@@ -129,5 +159,31 @@ class SanPham
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
+    }
+
+    public function giamSoLuong($san_pham_id, $so_luong)
+    {
+        $sql = "UPDATE san_phams 
+            SET so_luong = so_luong - :so_luong 
+            WHERE id = :id";
+
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            ':so_luong' => $so_luong,
+            ':id' => $san_pham_id
+        ]);
+    }
+
+    public function tangSoLuong($san_pham_id, $so_luong)
+    {
+        $sql = "UPDATE san_phams 
+            SET so_luong = so_luong + :so_luong 
+            WHERE id = :id";
+
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            ':so_luong' => $so_luong,
+            ':id' => $san_pham_id
+        ]);
     }
 }

@@ -123,18 +123,31 @@
                                                     </div>
                                                 </div>
                                             <?php endforeach ?>
-                                            <form action="#" class="review-form">
+                                            <form action="<?= BASE_URL . '?act=post-binh-luan' ?>" method="POST" class="review-form">
+
+                                                <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
+
                                                 <div class="form-group row">
+
                                                     <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Nội dung bình luận</label>
-                                                        <textarea class="form-control" required></textarea>
+
+                                                        <label class="col-form-label">
+                                                            <span class="text-danger">*</span>
+                                                            Nội dung bình luận
+                                                        </label>
+
+                                                        <textarea name="noi_dung" class="form-control" required></textarea>
+
                                                     </div>
+
                                                 </div>
 
                                                 <div class="buttons">
-                                                    <button class="btn btn-sqr" type="submit">Bình luận</button>
+                                                    <button class="btn btn-sqr" type="submit">
+                                                        Bình luận
+                                                    </button>
                                                 </div>
+
                                             </form> <!-- end of review-form -->
                                         </div>
                                     </div>
