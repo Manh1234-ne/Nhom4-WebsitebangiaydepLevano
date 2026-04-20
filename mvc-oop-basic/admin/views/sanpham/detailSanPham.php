@@ -160,7 +160,7 @@
           </table>
         </div>
        
-        <ul class="nav nav-tabs row mt-4" id="myTab" role="tablist">
+        <!-- <ul class="nav nav-tabs row mt-4" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Bình luận của sản phẩm</button>
           </li>
@@ -205,7 +205,7 @@
                     </tr>
                   </tbody>
                 </table>
-          </div>
+          </div> -->
 
 
         

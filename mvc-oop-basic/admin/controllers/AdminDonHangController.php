@@ -29,6 +29,7 @@ class AdminDonHangController
         $id = $_GET['id_don_hang'];
         $donHang = $this->modelDonHang->getDetailDonHang($id);
         $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
+        $error = $_SESSION['error'] ?? [];
         if ($donHang) {
             require_once './views/donhang/editDonHang.php';
             deleteSessionError();

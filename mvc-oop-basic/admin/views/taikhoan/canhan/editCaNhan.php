@@ -41,47 +41,40 @@
                     <form action="<?= BASE_URL_ADMIN . '?act=sua-thong-tin-ca-nhan-quan-tri' ?>" method="post">
                         <hr>
                         <h3>Thông tin cá nhân</h3>
+                        <?php if (isset($_SESSION['success'])) { ?>
+                            <div class="alert alert-success alert-dismissible">
+                                <a class="close" data-dismiss="alert"></a>
+                                <i class="fa fa-check"></i>
+                                <?= $_SESSION['success']; ?>
+                            </div>
+                            <?php unset($_SESSION['success']); ?>
+                        <?php } ?>
 
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Họ tên:</label>
                             <div class="col-lg-12">
-                                <input class="form-control" type="text" value="" name="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Last name:</label>
-                            <div class="col-lg-12">
-                                <input class="form-control" type="text" value="">
-                                <input class="form-control" type="text" value="bootdey">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Company:</label>
-                            <div class="col-lg-12">
-                                <input class="form-control" type="text" value="">
+                                <input class="form-control" type="text" value="<?= $thongTin['ho_ten'] ?? '' ?>" name="ho_ten">
+                                <?php if (isset($_SESSION['error']['ho_ten'])) { ?>
+                                    <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Email:</label>
                             <div class="col-lg-12">
-                                <input class="form-control" type="text" value="janesemail@gmail.com">
+<input class="form-control" type="email" value="<?= $thongTin['email'] ?? '' ?>" name="email">
+                                <?php if (isset($_SESSION['error']['email'])) { ?>
+                                    <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Time Zone:</label>
+                            <label class="col-lg-3 control-label">Số điện thoại:</label>
                             <div class="col-lg-12">
-                                <div class="ui-select">
-                                    <select id="user_time_zone" class="form-control">
-                                        <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                        <option value="Alaska">(GMT-09:00) Alaska</option>
-                                        <option value="Pacific Time (US &amp; Canada)">(GMT-012:00) Pacific Time (US &amp; Canada)</option>
-                                        <option value="Arizona">(GMT-07:00) Arizona</option>
-                                        <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                                        <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                                        <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                                        <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                                    </select>
-                                </div>
+                                <input class="form-control" type="text" value="<?= $thongTin['so_dien_thoai'] ?? '' ?>" name="so_dien_thoai">
+                                <?php if (isset($_SESSION['error']['so_dien_thoai'])) { ?>
+                                    <p class="text-danger"><?= $_SESSION['error']['so_dien_thoai'] ?></p>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="form-group">
@@ -116,7 +109,7 @@
                             <div class="col-md-12">
                                 <input class="form-control" type="password" name="new_pass" value="">
                                 <?php if (isset($_SESSION['error']['new_pass'])) { ?>
-                                    <p class="text-danger"><?= $_SESSION['error']['new_pass'] ?></p>
+<p class="text-danger"><?= $_SESSION['error']['new_pass'] ?></p>
                                 <?php } ?>
                             </div>
                         </div>

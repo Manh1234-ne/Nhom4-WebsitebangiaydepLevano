@@ -511,6 +511,7 @@ class HomeController
         foreach ($chiTietGioHang as $item) {
             $soSanPhamTrongGio += (int)($item['so_luong'] ?? 0);
         }
+        $binhLuans = $this->modelSanPham->getBinhLuanByUser($taiKhoanId);
 
         require_once './views/dashboard.php';
     }
@@ -536,9 +537,15 @@ class HomeController
         }
 
         $email = $_SESSION['user_client']['email'];
+        $user = $this->modelTaiKhoan->getUserByEmail($email);
+
         $ho_ten = $_POST['ho_ten'] ?? '';
         $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
         $dia_chi = $_POST['dia_chi'] ?? '';
+
+        $current_password = $_POST['current_password'] ?? '';
+        $new_password = $_POST['new_password'] ?? '';
+        $confirm_password = $_POST['confirm_password'] ?? '';
 
         if (empty($ho_ten)) {
             $_SESSION['error'] = "Họ tên không được để trống";
@@ -546,6 +553,7 @@ class HomeController
             exit;
         }
 
+        // 👉 UPDATE THÔNG TIN CƠ BẢN
         $data = [
             'ho_ten' => $ho_ten,
             'so_dien_thoai' => $so_dien_thoai,
@@ -555,10 +563,33 @@ class HomeController
 
         $this->modelTaiKhoan->updateUser($data);
 
+        // 👉 XỬ LÝ ĐỔI MẬT KHẨU
+        if (!empty($current_password) || !empty($new_password)) {
+
+            // kiểm tra mật khẩu hiện tại
+            if (!password_verify($current_password, $user['mat_khau'])) {
+                $_SESSION['error'] = "Mật khẩu hiện tại không đúng";
+                header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
+                exit;
+            }
+
+            // kiểm tra confirm
+            if ($new_password !== $confirm_password) {
+                $_SESSION['error'] = "Mật khẩu xác nhận không khớp";
+                header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
+                exit;
+            }
+
+            // hash password mới
+            $newHash = password_hash($new_password, PASSWORD_DEFAULT);
+
+            // update password
+            $this->modelTaiKhoan->updatePassword($email, $newHash);
+        }
+
         $_SESSION['success'] = "Cập nhật thành công";
         header("Location: " . BASE_URL . '?act=thong-tin-ca-nhan');
     }
-
 
     public function postBinhLuan()
     {

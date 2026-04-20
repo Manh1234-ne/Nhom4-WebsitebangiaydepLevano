@@ -127,19 +127,24 @@
 
                                                 <input type="hidden" name="san_pham_id" value="<?= $sanPham['id'] ?>">
 
+                                                <!-- thông báo lỗi -->
+                                                <?php if (isset($_SESSION['error'])): ?>
+                                                    <div class="alert alert-danger">
+                                                        <?php foreach ($_SESSION['error'] as $err): ?>
+                                                            <p><?= $err ?></p>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                    <?php unset($_SESSION['error']); ?>
+                                                <?php endif; ?>
+
                                                 <div class="form-group row">
-
                                                     <div class="col">
-
                                                         <label class="col-form-label">
                                                             <span class="text-danger">*</span>
                                                             Nội dung bình luận
                                                         </label>
-
-                                                        <textarea name="noi_dung" class="form-control" required></textarea>
-
+                                                        <textarea name="noi_dung" class="form-control"></textarea>
                                                     </div>
-
                                                 </div>
 
                                                 <div class="buttons">
@@ -147,7 +152,6 @@
                                                         Bình luận
                                                     </button>
                                                 </div>
-
                                             </form> <!-- end of review-form -->
                                         </div>
                                     </div>
@@ -239,7 +243,7 @@
     <!-- related products area end -->
 </main>
 <!-- offcanvas mini cart start -->
-<div class="offcanvas-minicart-wrapper">
+<!-- <div class="offcanvas-minicart-wrapper">
     <div class="minicart-inner">
         <div class="offcanvas-overlay"></div>
         <div class="minicart-inner-content">
@@ -314,7 +318,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- offcanvas mini cart end -->
 
 <?php require_once 'layout/footer.php'; ?>

@@ -111,4 +111,13 @@ class TaiKhoan
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute($data);
     }
+    public function updatePassword($email, $password)
+    {
+        $sql = "UPDATE tai_khoans SET mat_khau = :password WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            ':password' => $password,
+            ':email' => $email
+        ]);
+    }
 }

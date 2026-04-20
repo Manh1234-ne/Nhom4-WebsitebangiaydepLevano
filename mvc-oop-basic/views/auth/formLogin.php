@@ -38,10 +38,10 @@
                             <?php } ?>
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="single-input-item">
-                                    <input type="email" placeholder="Email or Username" name="email" required />
+                                    <input type="email" placeholder="Email or Username" name="email"  />
                                 </div>
                                 <div class="single-input-item">
-                                    <input type="password" placeholder="Enter your Password" name="password" required />
+                                    <input type="password" placeholder="Enter your Password" name="password"  />
                                 </div>
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
@@ -63,7 +63,7 @@
     <!-- login register wrapper end -->
 </main>
 <!-- offcanvas mini cart start -->
-<div class="offcanvas-minicart-wrapper">
+<!-- <div class="offcanvas-minicart-wrapper">
     <div class="minicart-inner">
         <div class="offcanvas-overlay"></div>
         <div class="minicart-inner-content">
@@ -138,7 +138,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- offcanvas mini cart end -->
 
 <?php require_once 'views/layout/footer.php'; ?>

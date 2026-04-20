@@ -345,4 +345,48 @@ class AdminTaiKhoanController
             }
         }
     }
+    public function postEditCaNhanQuanTri()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $ho_ten = $_POST['ho_ten'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $so_dien_thoai = $_POST['so_dien_thoai'] ?? '';
+
+            $errors = [];
+
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = 'Vui lòng điền trường dữ liệu này';
+            }
+
+            if (empty($email)) {
+                $errors['email'] = 'Vui lòng điền trường dữ liệu này';
+            }
+
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = 'Vui lòng điền trường dữ liệu này';
+            }
+
+            $_SESSION['error'] = $errors;
+
+            if (!$errors) {
+                // Lấy user từ session
+                $user = $this->modelTaiKhoan->getTaiKhoanformEmail($_SESSION['user_admin']);
+
+                // Thực hiện update thông tin cá nhân
+                $status = $this->modelTaiKhoan->updateTaiKhoan($user['id'], $ho_ten, $email, $so_dien_thoai, $user['trang_thai']);
+
+                if ($status) {
+                    $_SESSION['success'] = "Cập nhật thông tin cá nhân thành công";
+                    $_SESSION['flash'] = true;
+                    header("Location:" . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                    exit();
+                }
+            } else {
+                // Lỗi thì lưu lỗi vào session
+                $_SESSION['flash'] = true;
+                header("Location:" . BASE_URL_ADMIN . '?act=form-sua-thong-tin-ca-nhan-quan-tri');
+                exit();
+            }
+        }
+    }
 }

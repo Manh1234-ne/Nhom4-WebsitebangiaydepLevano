@@ -66,36 +66,36 @@
             <form action="<?= BASE_URL ?>?act=post-signup" method="POST">
 
                 <div class="single-input-item">
-                    <input type="text" name="ten" placeholder="Full Name" required>
+                    <input type="text" name="ten" placeholder="Full Name">
                 </div>
 
                 <div class="single-input-item">
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email">
                 </div>
 
                 <div class="single-input-item">
-                    <input type="date" name="ngay_sinh" required>
+                    <input type="date" name="ngay_sinh">
                 </div>
 
                 <div class="single-input-item">
-                    <input type="text" name="so_dien_thoai" placeholder="Số điện thoại" required>
+                    <input type="text" name="so_dien_thoai" placeholder="Số điện thoại">
                 </div>
 
                 <div class="single-input-item">
-                    <input type="text" name="dia_chi" placeholder="Địa chỉ" required>
+                    <input type="text" name="dia_chi" placeholder="Địa chỉ">
                 </div>
 
                 <div class="row">
 
                     <div class="col-lg-6">
                         <div class="single-input-item">
-                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Password">
                         </div>
                     </div>
 
                     <div class="col-lg-6">
                         <div class="single-input-item">
-                            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                            <input type="password" name="confirm_password" placeholder="Confirm Password">
                         </div>
                     </div>
 

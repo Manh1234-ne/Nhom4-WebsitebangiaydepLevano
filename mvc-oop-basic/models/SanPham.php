@@ -80,11 +80,12 @@ class SanPham
     public function getBinhLuanFromSanPham($id)
     {
         $sql = "SELECT bl.*, tk.ho_ten, tk.anh_dai_dien
-            FROM binh_luans bl
-            JOIN tai_khoans tk
-            ON bl.tai_khoan_id = tk.id
-            WHERE bl.san_pham_id = ?
-            ORDER BY bl.id DESC";
+        FROM binh_luans bl
+        JOIN tai_khoans tk
+        ON bl.tai_khoan_id = tk.id
+        WHERE bl.san_pham_id = ?
+        AND bl.trang_thai = 1
+        ORDER BY bl.id DESC";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
@@ -185,5 +186,18 @@ class SanPham
             ':so_luong' => $so_luong,
             ':id' => $san_pham_id
         ]);
+    }
+    public function getBinhLuanByUser($tai_khoan_id)
+    {
+        $sql = "SELECT bl.*, sp.ten_san_pham 
+            FROM binh_luans bl
+            JOIN san_phams sp ON bl.san_pham_id = sp.id
+            WHERE bl.tai_khoan_id = :tai_khoan_id
+            ORDER BY bl.ngay_dang DESC";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':tai_khoan_id' => $tai_khoan_id]);
+
+        return $stmt->fetchAll();
     }
 }

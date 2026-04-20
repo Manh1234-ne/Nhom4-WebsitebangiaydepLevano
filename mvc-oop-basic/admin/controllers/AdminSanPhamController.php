@@ -131,6 +131,7 @@ class AdminSanPhamController
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+        $error = $_SESSION['error'] ?? [];
         if ($sanPham) {
             //Nếu tồn tại thì trả về form sửa sản phẩm
             require_once './views/sanpham/editSanPham.php';
